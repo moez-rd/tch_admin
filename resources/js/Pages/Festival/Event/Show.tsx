@@ -6,8 +6,7 @@ import SectionContent from "@/Components/molecules/section-content";
 import {ActionIcon, Badge, Box, Button, FileInput, Group, Menu, Select, Stack, TextInput} from "@mantine/core";
 import {
     IconArrowBackUp,
-    IconCategory, IconCircuitSwitchClosed,
-    IconCircuitSwitchOpen,
+    IconCategory,
     IconPencil,
     IconPlus,
     IconTrash
@@ -19,7 +18,6 @@ import {capitalize, formatDate, formatPrice, seminarCastRoleToColor, seminarCast
 import {EventType, SeminarCastRole} from "@/enums/constants";
 import DescriptionChildList from "@/Components/molecules/description-child-list";
 import {modals} from "@mantine/modals";
-import {File} from "react-bootstrap-icons";
 import {useForm} from "@mantine/form";
 
 /**
