@@ -25,11 +25,11 @@ class DatabaseSeeder extends Seeder
     {
         $festival_2023 = $this->createFestivals();
         $avatars = $this->createAvatars();
-        $participants = $this->createParticipants($festival_2023, $avatars);
-        $managers = $this->createManagers($festival_2023, $avatars);
+//        $participants = $this->createParticipants($festival_2023, $avatars);
+//        $managers = $this->createManagers($festival_2023, $avatars);
         $admin = $this->createAdmin($festival_2023, $avatars);
         $this->createEvents($festival_2023, $participants, $admin);
-        $this->createFaqs($festival_2023, $managers);
+//        $this->createFaqs($festival_2023, $managers);
     }
 
     private function createFestivals()
