@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Festival;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
@@ -39,6 +40,13 @@ class HandleInertiaRequests extends Middleware
                     'location' => $request->url(),
                 ]);
             },
+            'constants' => config('constants'),
+            'festivals' => Festival::all(),
+            'flash' => [
+                'info' => fn () => $request->session()->get('info'),
+                'error' => fn () => $request->session()->get('error'),
+                'success' => fn () => $request->session()->get('success'),
+            ],
         ]);
     }
 }
