@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
 //        $participants = $this->createParticipants($festival_2023, $avatars);
 //        $managers = $this->createManagers($festival_2023, $avatars);
         $admin = $this->createAdmin($festival_2023, $avatars);
-        $this->createEvents($festival_2023, $participants, $admin);
+        $this->createEvents($festival_2023, $admin);
 //        $this->createFaqs($festival_2023, $managers);
     }
 
@@ -105,7 +105,7 @@ class DatabaseSeeder extends Seeder
             ]);
     }
 
-    public function createEvents($festival, $participants, $admin): void
+    public function createEvents($festival, $admin): void
     {
         $event_uiux = Event::factory()
             ->hasContactPersons(4)
