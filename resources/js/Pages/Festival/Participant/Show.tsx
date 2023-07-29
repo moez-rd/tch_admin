@@ -53,31 +53,31 @@ export default function ParticipantShowPage(props: Props): React.JSX.Element {
             ]
         },
         {
-            title: "Informasi Profile",
+            title: "Informasi Profil",
             data: [
                 {
                     key: "Institusi",
-                    value: participant.user_profile?.institution
+                    value: participant.userProfile?.institution
                 },
                 {
                     key: "Status",
-                    value: educationLevelToString(participant.user_profile?.education_level!)
+                    value: educationLevelToString(participant.userProfile?.education_level!)
                 },
                 {
                     key: "NIM/NISN",
-                    value: participant.user_profile?.id_number
+                    value: participant.userProfile?.id_number
                 },
                 {
                     key: "Kartu tanda mahasiswa/siswa",
-                    value: participant.user_profile?.id_number_image
+                    value: participant.userProfile?.id_number_image
                 },
                 {
                     key: "Jenis kelamin",
-                    value: genderToString(participant.user_profile?.gender!)
+                    value: genderToString(participant.userProfile?.gender!)
                 },
                 {
                     key: "WhatsApp",
-                    value: participant.user_profile?.whatsapp
+                    value: participant.userProfile?.whatsapp
                 }
             ]
         }
