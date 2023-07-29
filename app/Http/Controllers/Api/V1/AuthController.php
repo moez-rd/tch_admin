@@ -97,7 +97,7 @@ class AuthController extends Controller
             'provider' => $request->input('provider'),
         ]);
 
-        $festival->users()->attach($user->id);
+        $festival->users()->syncWithoutDetaching($user->id);
 
         $token = $user->createToken('participant_auth')->plainTextToken;
 

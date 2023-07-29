@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Festival;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ class ParticipantController extends Controller
     {
         $participants = User::with(['userProfile'])
             ->where('role', config('constants.user_role.participant'))
-            ->where('selected_festival', $request->user()->selected_festival)
+            ->whereRelation('festivals', 'id', $request->user()->selected_festival)
             ->withCount('eventRegistrations')
             ->orderByDesc('created_at')
             ->get();
@@ -27,7 +28,7 @@ class ParticipantController extends Controller
         $participant = User::with(['userProfile', 'eventRegistrations', 'eventRegistrations.event'])
             ->find($id);
 
-        if (! $participant) {
+        if (!$participant) {
             return to_route('participants.index');
         }
 
