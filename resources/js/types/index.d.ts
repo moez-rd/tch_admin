@@ -88,6 +88,7 @@ export interface Provider {
 export interface UserProfile {
     id: string
     id_number?: string
+    id_number_image?: string
     institution?: string
     education_level?: number
     whatsapp?: string

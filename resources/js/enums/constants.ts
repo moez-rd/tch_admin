@@ -38,3 +38,8 @@ export enum ProviderType {
     GOOGLE = 'google',
     GITHUB = 'github'
 }
+
+export enum EducationLevel {
+    HIGH_SCHOOL,
+    COLLEGE,
+}

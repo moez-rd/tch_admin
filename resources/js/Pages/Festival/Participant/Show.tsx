@@ -8,7 +8,7 @@ import {IconArrowBackUp, IconPencil, IconTrash} from "@tabler/icons-react";
 import DescriptionList from "@/Components/molecules/description-list";
 import {PageProps} from "@/types";
 import {DataDisplay} from "@/types/app";
-import {formatDate} from "@/lib/utils";
+import {educationLevelToString, formatDate, genderToString} from "@/lib/utils";
 
 /**
  * interface
@@ -49,6 +49,35 @@ export default function ParticipantShowPage(props: Props): React.JSX.Element {
                 {
                     key: "Bergabung pada",
                     value: formatDate(participant.created_at)
+                }
+            ]
+        },
+        {
+            title: "Informasi Profile",
+            data: [
+                {
+                    key: "Institusi",
+                    value: participant.user_profile?.institution
+                },
+                {
+                    key: "Status",
+                    value: educationLevelToString(participant.user_profile?.education_level!)
+                },
+                {
+                    key: "NIM/NISN",
+                    value: participant.user_profile?.id_number
+                },
+                {
+                    key: "Kartu tanda mahasiswa/siswa",
+                    value: participant.user_profile?.id_number_image
+                },
+                {
+                    key: "Jenis kelamin",
+                    value: genderToString(participant.user_profile?.gender!)
+                },
+                {
+                    key: "WhatsApp",
+                    value: participant.user_profile?.whatsapp
                 }
             ]
         }

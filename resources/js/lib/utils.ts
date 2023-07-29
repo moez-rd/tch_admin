@@ -1,6 +1,6 @@
 import {Festival} from "@/types";
 import {usePage} from "@inertiajs/react";
-import {EventRegistrationRole, PaymentStatus, SeminarCastRole} from "@/enums/constants";
+import {EducationLevel, EventRegistrationRole, Gender, PaymentStatus, SeminarCastRole} from "@/enums/constants";
 import {Data} from "@/types/app";
 
 export function getFirstLetters(str: string): string {
@@ -133,6 +133,28 @@ export function eventRegistrantRoleToColor(number: number | string): string | nu
             return "violet"
         case EventRegistrationRole.MEMBER:
             return "orange"
+    }
+
+    return null
+}
+
+export function educationLevelToString(number: number | string): string | null {
+    switch (Number(number)) {
+        case EducationLevel.COLLEGE:
+            return "Mahasiswa"
+        case EducationLevel.HIGH_SCHOOL:
+            return "Siswa"
+    }
+
+    return null
+}
+
+export function genderToString(number: number | string): string | null {
+    switch (Number(number)) {
+        case Gender.MALE:
+            return "Laki-laki"
+        case Gender.FEMALE:
+            return "Perempuan"
     }
 
     return null
