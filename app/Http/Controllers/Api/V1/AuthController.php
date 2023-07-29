@@ -6,6 +6,7 @@ use App\Enums\ErrorCode;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\LoginRequest;
 use App\Models\Avatar;
+use App\Models\Festival;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -45,6 +46,8 @@ class AuthController extends Controller
             return jsonResponse(Response::HTTP_CONFLICT, 'Email already exists', errorCode: ErrorCode::EMAIL_ALREADY_EXISTS);
         }
 
+        $festival = Festival::where('is_active', true)->first();
+
         $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
@@ -52,6 +55,8 @@ class AuthController extends Controller
             'role' => config('constants.user_role.participant'),
             'avatar' => Avatar::inRandomOrder()->first()->image,
         ]);
+
+        $festival->users()->attach($user->id);
 
         $user->providers()->create([
             'provider_id' => $user->id,
@@ -75,6 +80,8 @@ class AuthController extends Controller
             return jsonResponse(Response::HTTP_UNAUTHORIZED, 'Invalid access token', errorCode: ErrorCode::INVALID_ACCESS_TOKEN);
         }
 
+        $festival = Festival::where('is_active', true)->first();
+
         $user = User::firstOrCreate(
             [
                 'email' => $request->input('email'),
@@ -89,6 +96,8 @@ class AuthController extends Controller
             'provider_id' => $request->input('provider_id'),
             'provider' => $request->input('provider'),
         ]);
+
+        $festival->users()->attach($user->id);
 
         $token = $user->createToken('participant_auth')->plainTextToken;
 
