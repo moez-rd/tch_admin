@@ -58,12 +58,12 @@ export interface User {
     updated_at: string
 
     providers?: Provider[]
-    userProfile?: UserProfile
+    user_profile?: UserProfile
     festivals?: Festival[]
     faqs?: Faq[]
-    eventRegistrationPayments?: EventRegistrationPayment[]
-    eventRegistrations?: EventRegistration[]
-    eventRegistrant?: EventRegistrant
+    event_registration_payments?: EventRegistrationPayment[]
+    event_registrations?: EventRegistration[]
+    event_registrant?: EventRegistrant
 
     event_registrations_count?: number
 }
@@ -118,7 +118,7 @@ export interface Festival {
     users?: User[]
     faqs?: Faq[]
     milestones?: Milestone<Festival>[]
-    contactPersons?: ContactPerson<Festival>[]
+    contact_persons?: ContactPerson<Festival>[]
 
     events_count?: number
     faqs_count?: number
@@ -143,9 +143,9 @@ export interface Event<EventType> {
 
     festival?: Festival
     eventable?: EventType
-    eventRegistrations?: EventRegistration[]
+    event_registrations?: EventRegistration[]
     milestones?: Milestone<Event<Seminar | Competition>>[]
-    contactPersons?: ContactPerson<Event<Seminar | Competition>>[]
+    contact_persons?: ContactPerson<Event<Seminar | Competition>>[]
 
     event_registrations_count: number
 }
@@ -160,8 +160,8 @@ export interface EventRegistration {
 
     users?: User[]
     event?: Event<Competition | Seminar>
-    eventRegistrationPayment?: EventRegistrationPayment
-    eventRegistrant?: EventRegistrant
+    event_registration_payment?: EventRegistrationPayment
+    event_registrant?: EventRegistrant
 
     users_count: number
 }
@@ -177,7 +177,7 @@ export interface EventRegistrationPayment {
     updated_at: string
 
     user: User
-    eventRegistration: EventRegistration
+    event_registration: EventRegistration
 }
 
 export interface Seminar {
@@ -187,7 +187,7 @@ export interface Seminar {
     updated_at: string
 
     event: Event<Seminar>
-    seminarCasts: SeminarCast[]
+    seminar_casts: SeminarCast[]
 }
 
 export interface SeminarCast {
@@ -250,7 +250,7 @@ export interface ContactPerson<T> {
     created_at: string
     updated_at: string
 
-    contactPersonable: T
+    contact_personable: T
 }
 
 export interface EventRegistrant {
