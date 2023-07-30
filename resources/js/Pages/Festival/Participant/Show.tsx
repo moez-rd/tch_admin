@@ -69,7 +69,7 @@ export default function ParticipantShowPage(props: Props): React.JSX.Element {
                 },
                 {
                     key: "Kartu tanda mahasiswa/siswa",
-                    value: participant.user_profile?.id_number_image
+                    value: participant.user_profile?.id_card_image
                 },
                 {
                     key: "Jenis kelamin",
