@@ -172,7 +172,7 @@ class UserController extends Controller
 
         // Check whether the event is individual or team type.
         // 0 => individual, 1 => leader
-        $role = $event->eventable_type === config('constants.event_type.seminar') || $event->eventable()->max_participant === 1
+        $role = $event->eventable_type === config('constants.event_type.seminar') || $event->eventable['max_participants'] === 1
             ? config('constants.event_registrant_role.individual')
             : config('constants.event_registrant_role.leader');
 
