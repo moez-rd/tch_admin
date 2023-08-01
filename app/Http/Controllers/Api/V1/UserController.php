@@ -170,9 +170,12 @@ class UserController extends Controller
 
         $eventRegistration = $event->eventRegistrations()->create($request->input());
 
+        Log::channel('api')->info($event->eventable_type);
+        Log::channel('api')->info($event->eventable['max_participants']);
+
         // Check whether the event is individual or team type.
         // 0 => individual, 1 => leader
-        $role = $event->eventable_type === config('constants.event_type.seminar') || $event->eventable['max_participants'] === 1
+        $role = ($event->eventable_type === config('constants.event_type.seminar')) || ($event->eventable['max_participants'] === 1)
             ? config('constants.event_registrant_role.individual')
             : config('constants.event_registrant_role.leader');
 
