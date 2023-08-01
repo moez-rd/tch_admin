@@ -170,9 +170,6 @@ class UserController extends Controller
 
         $eventRegistration = $event->eventRegistrations()->create($request->input());
 
-        Log::channel('api')->info('MULAI');
-        Log::channel('api')->info($event->eventable_type);
-        Log::channel('api')->info($event->eventable['max_participants']);
 
         // Check whether the event is individual or team type.
         // 0 => individual, 1 => leader
@@ -180,10 +177,6 @@ class UserController extends Controller
             ? config('constants.event_registrant_role.individual')
             : config('constants.event_registrant_role.leader');
 
-        Log::channel('api')->info('Harusnya muncul');
-        Log::channel('api')->info(($event->eventable_type === config('constants.event_type.seminar')) || ($event->eventable['max_participants'] === 1));
-        Log::channel('api')->info($role);
-        Log::channel('api')->info('END');
 
         // Attach current authenticated user to the registration with determined role
         $eventRegistration->users()->attach($request->user()->id, ['role' => $role]);
