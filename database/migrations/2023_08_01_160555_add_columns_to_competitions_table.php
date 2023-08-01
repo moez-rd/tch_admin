@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('competitions', function (Blueprint $table) {
-            $table->ulid('id')->primary();
-            $table->integer('max_participants', unsigned: true)->default(1);
-            $table->string('submission')->nullable();
-            $table->timestamps();
+        Schema::table('competitions', function (Blueprint $table) {
+            $table->string('submission')->nullable()->after('max_participants');;
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('competitions');
+        Schema::table('competitions', function (Blueprint $table) {
+            //
+        });
     }
 };
