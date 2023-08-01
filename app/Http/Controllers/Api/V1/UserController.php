@@ -179,6 +179,7 @@ class UserController extends Controller
             ? config('constants.event_registrant_role.individual')
             : config('constants.event_registrant_role.leader');
 
+        Log::channel('api')->info('Harusnya muncul');
         Log::channel('api')->info($role);
 
         // Attach current authenticated user to the registration with determined role
