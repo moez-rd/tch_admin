@@ -9,8 +9,6 @@ import {createDataList} from "@/lib/utils";
 import {Data} from "@/types/app";
 import {IconArrowBackUp, IconPencil, IconPlus, IconTrash} from "@tabler/icons-react";
 import {Box, Button, Group, Text, Textarea, TextInput} from "@mantine/core";
-import {modals} from "@mantine/modals";
-import {notifications} from "@mantine/notifications";
 import FormCard from "@/Components/molecules/form-card";
 import FormGroup from "@/Components/molecules/form-group";
 import {useForm} from "@mantine/form";

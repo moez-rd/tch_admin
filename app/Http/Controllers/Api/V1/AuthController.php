@@ -21,7 +21,7 @@ class AuthController extends Controller
         $withToken = $request->query('token');
 
         if (!Auth::attempt($request->only(['email', 'password']))) {
-            \Log::channel('api')->error(sprintf("ATTEMPT email: %s, with token: %s [Invalid credentials]", $request->input('email'), $request->input('password'), $withToken));
+            Log::channel('api')->error(sprintf("ATTEMPT email: %s, with token: %s [Invalid credentials]", $request->input('email'), $request->input('password'), $withToken));
             return jsonResponse(Response::HTTP_UNAUTHORIZED, 'Invalid credentials', errorCode: ErrorCode::INVALID_CREDENTIALS);
         }
 
@@ -33,7 +33,7 @@ class AuthController extends Controller
             $user['access_token'] = $token;
         }
 
-        \Log::channel('api')->info(sprintf("ATTEMPT email: %s, with token: %s", $request->input('email'), $withToken));
+        Log::channel('api')->info(sprintf("ATTEMPT email: %s, with token: %s", $request->input('email'), $withToken));
 
         return jsonResponse(Response::HTTP_OK, 'OK', $user);
     }
@@ -74,8 +74,6 @@ class AuthController extends Controller
 
     public function login(LoginRequest $request)
     {
-        Log::channel('api')->info('SSD');
-
         if (!$request->verifyToken()) {
             return jsonResponse(Response::HTTP_UNAUTHORIZED, 'Invalid access token', errorCode: ErrorCode::INVALID_ACCESS_TOKEN);
         }
