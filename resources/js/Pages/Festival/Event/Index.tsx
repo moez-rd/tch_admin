@@ -61,8 +61,8 @@ export default function EventIndexPage(props: Props): React.JSX.Element {
             ],
             badges: [
                 {
-                    name: competition.is_opened ? "Buka" : "Tutup",
-                    color: competition.is_opened ? "green" : "red"
+                    name: Number(competition.is_opened) ? "Buka" : "Tutup",
+                    color: Number(competition.is_opened) ? "green" : "red"
                 }
             ],
             menu: [
