@@ -39,6 +39,13 @@ class ParticipantController extends Controller
     public function destroy(string $id): RedirectResponse
     {
         $participant = User::find($id);
+
+        $participant->eventRegistrations()->each(function($registration) {
+            if ($registration->event_registrant->role !== config('constants.event_registrant_role.member')) {
+                $registration->delete();
+            }
+        });
+
         $participant->delete();
 
         return redirect()
