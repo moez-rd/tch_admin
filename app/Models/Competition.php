@@ -14,6 +14,7 @@ class Competition extends Model
 
     protected $fillable = [
         'max_participants',
+        'submission'
     ];
     //
     //    public function event(): BelongsTo

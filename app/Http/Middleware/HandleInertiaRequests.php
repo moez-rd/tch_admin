@@ -43,9 +43,13 @@ class HandleInertiaRequests extends Middleware
             'constants' => config('constants'),
             'festivals' => Festival::all(),
             'flash' => [
-                'info' => fn () => $request->session()->get('info'),
-                'error' => fn () => $request->session()->get('error'),
-                'success' => fn () => $request->session()->get('success'),
+                'notification_info' => fn () => $request->session()->get('notification_info'),
+                'notification_error' => fn () => $request->session()->get('notification_error'),
+                'notification_success' => fn () => $request->session()->get('notification_success'),
+
+                'message_info' => fn () => $request->session()->get('message_info'),
+                'message_error' => fn () => $request->session()->get('message_error'),
+                'message_success' => fn () => $request->session()->get('message_success'),
             ],
         ]);
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreFestivalRequest;
 use App\Http\Requests\UpdateFestivalRequest;
+use App\Models\Event;
 use App\Models\Festival;
 use Inertia\Inertia;
 
@@ -63,5 +64,19 @@ class FestivalController extends Controller
     public function destroy(Festival $festival)
     {
         //
+    }
+
+    public function addMilestone(Event $event)
+    {
+
+    }
+
+    public function addContactPerson(Event $event)
+    {
+
+    }
+
+    public function addSeminarCast(Event $event) {
+
     }
 }

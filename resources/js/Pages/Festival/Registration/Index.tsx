@@ -3,13 +3,15 @@ import FestivalLayout from "@/Pages/Festival/Layout";
 import {Head, usePage} from "@inertiajs/react";
 import SectionHeader from "@/Components/molecules/section-header";
 import SectionContent from "@/Components/molecules/section-content";
-import {Button, Group, Tabs} from "@mantine/core";
-import {IconPlus} from "@tabler/icons-react";
+import {ActionIcon, Button, Group, Menu, Tabs} from "@mantine/core";
+import {IconCategory, IconCircuitSwitchClosed, IconCircuitSwitchOpen, IconPlus} from "@tabler/icons-react";
 import DataList from "@/Components/molecules/data-list";
 import DataListItem from "@/Components/molecules/data-list-item";
 import {PageProps} from "@/types";
 import {Data} from "@/types/app";
 import {paymentStatusToColor, paymentStatusToLabel} from "@/lib/utils";
+import {useRegistration} from "@/hooks/useRegistration";
+import {EventType} from "@/enums/constants";
 
 /**
  * interface
@@ -26,51 +28,15 @@ interface Props extends PageProps {
  */
 export default function RegistrationIndexPage(props: Props): React.JSX.Element {
     const {auth, registrations}: Props = props
+    
+    const {getRegistrations} = useRegistration()
 
-    const {constants}: any = usePage().props;
-
-    type DataWithType = Data & { type: string }
-
-    console.log(registrations)
-
-    const registrationData = registrations.map((registration) => {
-        return {
-            id: registration.id,
-            title: registration.name || `UID: ${registration.uid}`,
-            type: registration.event?.eventable_type,
-            link: route('registrations.show', {id: registration.id}),
-            information: [
-                registration.event?.name,
-                registration.users_count > 1 ? `${registration.users_count} orang` : registration.users![0].name
-            ],
-            badges: [
-                {
-                    name: paymentStatusToLabel(registration.event_registration_payment?.status!),
-                    color: paymentStatusToColor(registration.event_registration_payment?.status!)
-                }
-            ],
-            menu: [
-                {
-                    label: "Hapus",
-                    props: {
-                        color: "red"
-                    },
-                    linkProps: {
-                        method: "delete",
-                        href: route('registrations.destroy', {id: registration.id})
-                    }
-                }
-            ]
-        }
-    }) as DataWithType[]
-
-    const registrationCompetitionsData = registrationData.filter((registration) =>
-        registration.type == constants.event_type.competition
+    const registrationCompetitionsData = getRegistrations(registrations).filter((registration) =>
+        registration.type == EventType.COMPETITION
     );
-    const registrationSeminarsData = registrationData.filter((registration) =>
-        registration.type == constants.event_type.seminar
+    const registrationSeminarsData = getRegistrations(registrations).filter((registration) =>
+        registration.type == EventType.SEMINAR
     );
-
 
     return (
         <FestivalLayout>
@@ -89,7 +55,7 @@ export default function RegistrationIndexPage(props: Props): React.JSX.Element {
                     </Tabs.List>
 
                     <Tabs.Panel value="all" pt="xs">
-                        <DataList title="Data Pendaftaran" data={registrationData}/>
+                        <DataList title="Data Pendaftaran" data={getRegistrations(registrations)}/>
                     </Tabs.Panel>
 
                     <Tabs.Panel value="competition" pt="xs">

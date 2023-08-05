@@ -22,11 +22,6 @@ export const links: Link[] = [
         basePath: "/festival/participants"
     },
     {
-        label: "Pembayaran",
-        link: route("payments.index"),
-        basePath: "/festival/payments"
-    },
-    {
         label: "Faqs",
         link: route("faqs.index"),
         basePath: "/festival/faqs"

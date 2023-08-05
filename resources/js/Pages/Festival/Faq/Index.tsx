@@ -11,6 +11,7 @@ import {IconPlus} from "@tabler/icons-react";
 import {Box, Button, Text} from "@mantine/core";
 import {modals} from "@mantine/modals";
 import {notifications} from "@mantine/notifications";
+import {useFaq} from "@/hooks/useFaq";
 
 /**
  * interface
@@ -28,51 +29,7 @@ interface Props extends PageProps {
 export default function FaqIndexPage(props: Props): React.JSX.Element {
     const {auth, faqs} = props
 
-    const faqData = faqs.map((faq) => {
-        return {
-            id: faq.id,
-            title: faq.question,
-            link: route('faqs.show', {id: faq.id}),
-            information: [
-                `Dibuat oleh: ${faq.user?.name}`
-            ],
-            menu: [
-                {
-                    label: "Edit",
-                    linkProps: {
-                        href: route('faqs.edit', {id: faq.id})
-                    }
-                },
-                {
-                    label: "Hapus",
-                    props: {
-                        color: "red"
-                    },
-                    linkProps: {
-                        href: "",
-                        onClick: () => handleDelete(faq)
-                    }
-                }
-            ]
-        }
-    }) as Data[]
-
-    const handleDelete = (faq: Faq) => {
-        modals.openConfirmModal({
-            title: 'Hapus Faq',
-            centered: true,
-            children: (
-                <Text size="sm">
-                    Yakin ingin menghapus faq <Text span weight={600}>{faq.question}</Text>?
-                </Text>
-            ),
-            labels: {confirm: 'Hapus', cancel: "Batal"},
-            confirmProps: {color: 'red'},
-            onConfirm: () => {
-                router.delete(route('faqs.destroy', {id: faq.id}))
-            }
-        })
-    }
+    const {getFaqs} = useFaq()
 
     return (
         <FestivalLayout>
@@ -89,7 +46,7 @@ export default function FaqIndexPage(props: Props): React.JSX.Element {
                             leftIcon={<IconPlus/>}>Tambah</Button>
                 </Box>
                 <Box pt="0.625rem">
-                    <DataList title="Data Faqs" data={faqData}/>
+                    <DataList title="Data Faqs" data={getFaqs(faqs)}/>
                 </Box>
             </SectionContent>
         </FestivalLayout>

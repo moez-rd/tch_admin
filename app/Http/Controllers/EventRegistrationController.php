@@ -6,6 +6,7 @@ use App\Http\Requests\StoreEventRegistrationRequest;
 use App\Http\Requests\UpdateEventRegistrationRequest;
 use App\Models\EventRegistration;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 
 class EventRegistrationController extends Controller
@@ -47,7 +48,7 @@ class EventRegistrationController extends Controller
     {
         $registration = EventRegistration::with(['users', 'eventRegistrationPayment', 'event'])->find($id);
 
-        if (! $registration) {
+        if (!$registration) {
             return to_route('registrations.index');
         }
 
@@ -75,8 +76,36 @@ class EventRegistrationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(EventRegistration $eventRegistration)
+    public function destroy(string $id)
     {
-        //
+        $eventRegistration = EventRegistration::find($id);
+        $eventRegistration->delete();
+
+        return redirect()
+            ->route('registrations.index')
+            ->with('notification_info', 'Pendaftaran #' . $eventRegistration->uid . ' berhasil dihapus');
     }
+
+    public function acceptPayment(Request $request, string $id)
+    {
+        $eventRegistration = EventRegistration::find($id);
+        $eventRegistration->eventRegistrationPayment()->update([
+            'status' => config('constants.payment_status.accepted')
+        ]);
+
+        return redirect()
+        ->back()
+        ->with('notification_info', 'Pendaftaran #' . $eventRegistration->uid . ' berhasil diterima');
+    }
+
+    public function rejectPayment(string $id)
+    {
+        $eventRegistration = EventRegistration::find($id);
+        $eventRegistration->eventRegistrationPayment()->update([
+            'status' => config('constants.payment_status.rejected')
+        ]);
+
+        return redirect()
+        ->back()
+        ->with('notification_info', 'Pendaftaran #' . $eventRegistration->uid . ' berhasil ditolak');    }
 }

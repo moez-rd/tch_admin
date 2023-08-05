@@ -10,6 +10,7 @@ import {
 import SectionHeader from "@/Components/molecules/section-header";
 import SectionContent from "@/Components/molecules/section-content";
 import {
+    IconAdjustments,
     IconCategory,
     IconCategory2, IconCircuitSwitchClosed, IconCircuitSwitchOpen,
     IconPlus, IconSettings,
@@ -22,6 +23,7 @@ import {data} from "autoprefixer";
 import {formatPrice} from "@/lib/utils";
 import {modals} from "@mantine/modals";
 import {notifications} from "@mantine/notifications";
+import {useEvent} from "@/hooks/useEvent";
 
 /**
  * interface
@@ -41,6 +43,8 @@ export default function EventIndexPage(props: Props): React.JSX.Element {
 
     const {constants}: any = usePage().props;
 
+    const {handleRegistrationClose, handleRegistrationOpen, getCompetitions, getSeminars} = useEvent()
+
     const competitions: Event<Competition>[] = events.filter(
         (event) => event.eventable_type == constants.event_type.competition
     ) as Event<Competition>[];
@@ -48,131 +52,6 @@ export default function EventIndexPage(props: Props): React.JSX.Element {
     const seminars: Event<Seminar>[] = events.filter(
         (event) => event.eventable_type == constants.event_type.seminar
     ) as Event<Seminar>[];
-
-    const competitionData = competitions.map((competition) => {
-        return {
-            id: competition.id,
-            title: competition.name,
-            link: route('events.show', {event: competition.id}),
-            information: [
-                formatPrice(competition.price!),
-                competition.eventable?.max_participants === 1 ? "Individual" : `Maks ${competition.eventable?.max_participants} peserta`,
-                `${competition.event_registrations_count || 0} pendaftaran`
-            ],
-            badges: [
-                {
-                    name: Number(competition.is_opened) ? "Buka" : "Tutup",
-                    color: Number(competition.is_opened) ? "green" : "red"
-                }
-            ],
-            menu: [
-                {
-                    label: "Edit",
-                    linkProps: {
-                        href: route('events.edit', {id: competition.id})
-                    }
-                },
-                {
-                    label: "Hapus",
-                    props: {
-                        color: "red"
-                    },
-                    linkProps: {
-                        href: "",
-                        onClick: () => handleDelete(competition)
-                    }
-                }
-            ]
-        }
-    }) as Data[]
-
-    const seminarData = seminars.map((seminar) => {
-        return {
-            id: seminar.id,
-            title: seminar.name,
-            link: route('events.show', {id: seminar.id}),
-            information: [
-                formatPrice(seminar.price!),
-                `${seminar.event_registrations_count || 0} pendaftaran`
-            ],
-            badges: [
-                {
-                    name: seminar.is_opened ? "Buka" : "Tutup",
-                    color: seminar.is_opened ? "green" : "red"
-                }
-            ],
-            menu: [
-                {
-                    label: "Edit",
-                    linkProps: {
-                        href: route('events.edit', {id: seminar.id})
-                    }
-                },
-                {
-                    label: "Hapus",
-                    props: {
-                        color: "red"
-                    },
-                    linkProps: {
-                        href: "",
-                        onClick: () => handleDelete(seminar)
-                    }
-                }
-            ]
-        }
-    }) as Data[]
-
-    const handleDelete = (event: Event<Seminar | Competition>) => {
-        modals.openConfirmModal({
-            title: 'Hapus Event',
-            centered: true,
-            children: (
-                <Text size="sm">
-                    Yakin ingin menghapus event <Text span weight={600}>{event.name}</Text>?. Tindakan ini akan
-                    menghapus seluruh pendaftaran event ini.
-                </Text>
-            ),
-            labels: {confirm: 'Hapus', cancel: "Batal"},
-            confirmProps: {color: 'red'},
-            onConfirm: () => {
-                router.delete(route('events.destroy', {id: event.id}))
-            }
-        })
-    }
-
-    const handleRegistrationOpen = () => {
-        modals.openConfirmModal({
-            title: 'Buka Seluruh Pendaftaran',
-            centered: true,
-            children: (
-                <Text size="sm">
-                    Yakin ingin <Text span weight={600}>membuka</Text> seluruh pendaftaran?
-                </Text>
-            ),
-            labels: {confirm: 'Ya, buka', cancel: "Batal"},
-            confirmProps: {color: 'green'},
-            onConfirm: () => {
-                router.patch(route('options.events.open'))
-            }
-        })
-    }
-
-    const handleRegistrationClose = () => {
-        modals.openConfirmModal({
-            title: 'Tutup Seluruh Pendaftaran',
-            centered: true,
-            children: (
-                <Text size="sm">
-                    Yakin ingin <Text span weight={600}>menutup</Text> seluruh pendaftaran?
-                </Text>
-            ),
-            labels: {confirm: 'Ya, tutup', cancel: "Batal"},
-            confirmProps: {color: 'red'},
-            onConfirm: () => {
-                router.patch(route('options.events.close'))
-            }
-        })
-    }
 
     return (
         <FestivalLayout>
@@ -192,8 +71,8 @@ export default function EventIndexPage(props: Props): React.JSX.Element {
                                     href={route('events.create')}>Tambah</Button>
                             <Menu shadow="md" width={200} position="bottom-end">
                                 <Menu.Target>
-                                    <ActionIcon>
-                                        <IconCategory/>
+                                    <ActionIcon color="blue" variant="outline">
+                                        <IconAdjustments/>
                                     </ActionIcon>
                                 </Menu.Target>
 
@@ -207,11 +86,11 @@ export default function EventIndexPage(props: Props): React.JSX.Element {
                     </Tabs.List>
 
                     <Tabs.Panel value="competition" pt="xs">
-                        <DataList title="Data Kompetisi" data={competitionData}/>
+                        <DataList title="Data Kompetisi" data={getCompetitions(competitions)}/>
                     </Tabs.Panel>
 
                     <Tabs.Panel value="seminar" pt="xs">
-                        <DataList title="Data Seminar" data={seminarData}/>
+                        <DataList title="Data Seminar" data={getSeminars(seminars)}/>
                     </Tabs.Panel>
                 </Tabs>
             </SectionContent>

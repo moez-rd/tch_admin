@@ -38,12 +38,20 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
+        if (Faq::where('question', $request->input('question'))->exists()) {
+            return to_route('faqs.create')->with('message_error', "Faq {$request->input('question')} sudah tersedia");
+        }
+
         $faq = Faq::create([
             'question' => $request->input('question'),
             'answer' => $request->input('answer'),
             'created_by' => $request->user()->id,
             'festival_id' => $request->user()->selected_festival,
         ]);
+
+        return redirect()
+            ->route('faqs.index')
+            ->with('notification_success', 'Faq ' . Str::limit($faq->question, 20) . ' berhasil dibuat');
     }
 
     /**
@@ -51,7 +59,7 @@ class FaqController extends Controller
      */
     public function show(Faq $faq)
     {
-        if (! $faq) {
+        if (!$faq) {
             return to_route('faqs.index');
         }
 
@@ -65,27 +73,45 @@ class FaqController extends Controller
      */
     public function edit(Faq $faq)
     {
-        //
+        if (!$faq) {
+            return to_route('faqs.index');
+        }
+
+        return Inertia::render('Festival/Faq/Edit', [
+            'faq' => $faq->load(['user:id,name']),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateFaqRequest $request, Faq $faq)
+    public function update(Request $request, Faq $faq)
     {
-        //
+        if (Faq::where('question', $request->input('question'))->exists()) {
+            return to_route('faqs.create')->with('message_error', "Faq {$request->input('question')} sudah tersedia");
+        }
+
+        $faq = tap($faq)->update([
+            'question' => $request->input('question'),
+            'answer' => $request->input('answer'),
+            'created_by' => $request->user()->id,
+            'festival_id' => $request->user()->selected_festival,
+        ]);
+
+        return redirect()
+            ->route('faqs.show')
+            ->with('notification_success', 'Faq ' . Str::limit($faq->question, 20) . ' berhasil diperbarui');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Faq $faq)
     {
-        $faq = Faq::find($id);
         $faq->delete();
 
         return redirect()
             ->route('faqs.index')
-            ->with('info', 'Faq '.Str::limit($faq->question, 20).' berhasil dihapus');
+            ->with('notification_info', 'Faq ' . Str::limit($faq->question, 20) . ' berhasil dihapus');
     }
 }

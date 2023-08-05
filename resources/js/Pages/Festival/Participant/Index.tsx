@@ -10,6 +10,7 @@ import {Data} from "@/types/app";
 import {createDataList} from "@/lib/utils";
 import {modals} from "@mantine/modals";
 import {notifications} from "@mantine/notifications";
+import {useParticipant} from "@/hooks/useParticipant";
 
 /**
  * interface
@@ -27,47 +28,7 @@ interface Props extends PageProps {
 export default function ParticipantIndexPage(props: Props): React.JSX.Element {
     const {auth, participants} = props
 
-    const participantData: Data[] = createDataList<User>(participants, (data) => {
-        return {
-            id: data.id,
-            title: data.name,
-            avatar: data.avatar,
-            link: route('participants.show', {id: data.id}),
-            information: [
-                `NIM/NISN: ${data.user_profile?.id_number}`,
-                `${data.event_registrations_count} event`
-            ],
-            menu: [
-                {
-                    label: "Hapus",
-                    props: {
-                        color: "red"
-                    },
-                    linkProps: {
-                        href: "",
-                        onClick: () => handleDelete(data)
-                    }
-                }
-            ]
-        }
-    })
-
-    const handleDelete = (participant: User) => {
-        modals.openConfirmModal({
-            title: 'Hapus Partisipan',
-            centered: true,
-            children: (
-                <Text size="sm">
-                    Yakin ingin menghapus partisipan <Text span weight={600}>{participant.name}</Text>?
-                </Text>
-            ),
-            labels: {confirm: 'Hapus', cancel: "Batal"},
-            confirmProps: {color: 'red'},
-            onConfirm: () => {
-                router.delete(route('participants.destroy', {id: participant.id}))
-            }
-        })
-    }
+    const {getParticipants} = useParticipant()
 
     return (
         <FestivalLayout>
@@ -76,7 +37,7 @@ export default function ParticipantIndexPage(props: Props): React.JSX.Element {
             <SectionHeader title="Partisipan" subTitle="Kelola partisipan"/>
 
             <SectionContent>
-                <DataList title="Data Partisipan" data={participantData}/>
+                <DataList title="Data Partisipan" data={getParticipants(participants)}/>
             </SectionContent>
         </FestivalLayout>
     )

@@ -47,7 +47,7 @@ class Event extends Model
 
     public function milestones(): MorphMany
     {
-        return $this->morphMany(Milestone::class, 'milestoneable');
+        return $this->morphMany(Milestone::class, 'milestoneable')->orderBy('date');
     }
 
     public function contactPersons(): MorphMany

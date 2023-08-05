@@ -8,6 +8,11 @@ import {MantineProvider} from "@mantine/core";
 import {theme} from "@/lib/mantine/theme";
 import {ModalsProvider} from '@mantine/modals';
 import {Notifications} from "@mantine/notifications";
+import {RecoilRoot} from "recoil";
+import ImagePreview from "@/Components/molecules/image-preview";
+import CreateSeminarCastModal from './Components/molecules/create-seminar-cast-modal';
+import CreateContactPersonModal from './Components/molecules/create-contact-person-modal';
+import CreateMilestoneModal from './Components/molecules/create-milestone-modal';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -19,12 +24,18 @@ createInertiaApp({
 
         root.render(
             <>
-                <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
-                    <Notifications />
-                    <ModalsProvider>
-                        <App {...props} />
-                    </ModalsProvider>
-                </MantineProvider>
+                <RecoilRoot>
+                    <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
+                        <Notifications/>
+                        <ImagePreview/>
+                        <CreateSeminarCastModal/>
+                        <CreateContactPersonModal/>
+                        <CreateMilestoneModal/>
+                        <ModalsProvider>
+                            <App {...props} />
+                        </ModalsProvider>
+                    </MantineProvider>
+                </RecoilRoot>
             </>
         );
     },

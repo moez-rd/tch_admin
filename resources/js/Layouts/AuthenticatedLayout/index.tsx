@@ -31,33 +31,33 @@ export default function AuthenticatedLayout(props: Props): React.JSX.Element {
     const {flash}: any = usePage().props;
 
     useEffect(() => {
-        if (flash.info) {
+        if (flash.notification_info) {
             notifications.show({
                 title: "Info",
-                message: flash.info,
+                message: flash.notification_info,
                 color: "blue",
                 icon: <IconInfoCircle size="1.1rem"/>
             })
         }
 
-        if (flash.success) {
+        if (flash.notification_success) {
             notifications.show({
                 title: "Berhasil",
-                message: flash.success,
+                message: flash.notification_success,
                 color: "green",
                 icon: <IconCheck size="1.1rem"/>
             })
         }
 
-        if (flash.error) {
+        if (flash.notification_error) {
             notifications.show({
                 title: "Eror",
-                message: flash.error,
+                message: flash.notification_error,
                 color: "red",
                 icon: <IconX size="1.1rem"/>
             })
         }
-    }, [flash.info, flash.success, flash.error]);
+    }, [flash.notification_info, flash.notification_success, flash.notification_error]);
 
     const {auth}: any = usePage().props;
     const user: User = auth.user;

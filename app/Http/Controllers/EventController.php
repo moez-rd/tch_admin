@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateEventRequest;
 use App\Models\Competition;
 use App\Models\Event;
+use App\Models\Milestone;
 use App\Models\Seminar;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -40,13 +41,17 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+        if (Event::where('codename', $request->input('codename'))->exists()) {
+            return to_route('events.create')->with('message_error', "Codename {$request->input('codename')} sudah tersedia");
+        }
+
         $eventable = $request->input('eventable_type') === config('constants.event_type.competition') ? (
-            Competition::create([
-                'max_participants' => $request->input('max_participants'),
-            ])) : (
-                Seminar::create([
-                    'theme' => $request->input('theme'),
-                ]));
+        Competition::create([
+            'max_participants' => $request->input('max_participants'),
+        ])) : (
+        Seminar::create([
+            'theme' => $request->input('theme'),
+        ]));
 
         $event = Event::create([
             'name' => $request->input('name'),
@@ -65,7 +70,7 @@ class EventController extends Controller
 
         return redirect()
             ->route('events.index')
-            ->with('success', "Event {$event->name} berhasil dibuat");
+            ->with('notification_success', "Event {$event->name} berhasil dibuat");
     }
 
     /**
@@ -73,11 +78,11 @@ class EventController extends Controller
      */
     public function show(string $id)
     {
-        $event = Event::with(['eventable'])
+        $event = Event::with(['eventable', 'contactPersons', 'milestones'])
             ->withCount('eventRegistrations')
             ->find($id);
 
-        if (! $event) {
+        if (!$event) {
             return to_route('events.index');
         }
 
@@ -116,7 +121,7 @@ class EventController extends Controller
 
         return redirect()
             ->route('events.index')
-            ->with('info', "Event {$event->name} berhasil dihapus");
+            ->with('notification_info', "Event {$event->name} berhasil dihapus");
     }
 
     public function openAllRegistrations()
@@ -125,7 +130,7 @@ class EventController extends Controller
 
         return redirect()
             ->route('events.index')
-            ->with('success', 'Berhasil membuka seluruh pendaftaran');
+            ->with('notification_success', 'Berhasil membuka seluruh pendaftaran');
     }
 
     public function closeAllRegistrations()
@@ -134,6 +139,38 @@ class EventController extends Controller
 
         return redirect()
             ->route('events.index')
-            ->with('success', 'Berhasil menutup seluruh pendaftaran');
+            ->with('notification_success', 'Berhasil menutup seluruh pendaftaran');
+    }
+
+    public function addMilestone(Request $request, Event $event)
+    {
+        $milestone = $event->milestones()->create([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'date' => new Carbon($request->input('date')),
+        ]);
+
+        return redirect()
+            ->back()
+            ->with('notification_success', "Milestone {$milestone->name} berhasil dibuat");
+    }
+
+    public function addContactPerson(Request $request, Event $event)
+    {
+        $contactPerson = $event->contactPersons()->create([
+            'name' => $request->input('name'),
+            'whatsapp' => $request->input('whatsapp'),
+            'instagram' => $request->input('instagram'),
+            'line' => $request->input('line'),
+        ]);
+
+        return redirect()
+            ->back()
+            ->with('notification_success', "Narahubung {$contactPerson->name} berhasil dibuat");
+    }
+
+    public function addSeminarCast(Request $request, Event $event)
+    {
+
     }
 }

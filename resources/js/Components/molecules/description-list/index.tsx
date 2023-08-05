@@ -1,8 +1,24 @@
 import React from "react";
-import {Box, Button, Card, Center, Divider, Flex, Grid, rem, Stack, Text, Title, useMantineTheme} from "@mantine/core";
+import {
+    Box,
+    Button,
+    Card,
+    Center,
+    Divider,
+    Flex,
+    Grid,
+    rem,
+    Stack,
+    Text,
+    Title,
+    UnstyledButton,
+    useMantineTheme
+} from "@mantine/core";
 import {Data, DataDisplay} from "@/types/app";
 import {Link} from "@inertiajs/react";
 import {useStyles} from "@/Components/molecules/description-list/styles";
+import {useSetRecoilState} from "recoil";
+import {imagePreviewState} from "@/lib/recoil/imagePreviewAtom";
 
 /**
  * interface
@@ -23,6 +39,16 @@ export default function DescriptionList(props: Props): React.JSX.Element {
 
     const {classes} = useStyles()
 
+    const setImagePreview = useSetRecoilState(imagePreviewState)
+
+    const handleOpenImagePreviewButtonClick = (src: string, alt: string = '') => {
+        setImagePreview({
+            src,
+            alt,
+            opened: true
+        })
+    }
+
     return (
         <Card withBorder radius="md">
             <Card.Section inheritPadding py="xs" sx={(theme) => ({backgroundColor: theme.colors.gray[1]})}>
@@ -41,10 +67,16 @@ export default function DescriptionList(props: Props): React.JSX.Element {
                                             <Text weight={500} size="sm" color="gray.8">{item.key}</Text>
                                         </Grid.Col>
                                         <Grid.Col span={2}>
-                                            {item.link ? (
+                                            {item.link && item.value ? (
                                                 <Link href={item.link} className={classes.valueLink}>
-                                                    <Text size="sm" color="gray.7">{item.value || "-"}</Text>
+                                                    <Text size="sm" color="gray.7">{item.value}</Text>
                                                 </Link>
+                                            ) : item.imagePreview && item.value ? (
+                                                <UnstyledButton
+                                                    className={classes.valueLink}
+                                                    onClick={() => handleOpenImagePreviewButtonClick(item.value as string)}>
+                                                    <Text size="sm" color="gray.7">{item.value}</Text>
+                                                </UnstyledButton>
                                             ) : (
                                                 <Text size="sm" color="gray.7">{item.value || "-"}</Text>
 

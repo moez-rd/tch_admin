@@ -1,28 +1,25 @@
 import React from "react";
 import FestivalLayout from "@/Pages/Festival/Layout";
-import {Head, router} from "@inertiajs/react";
+import {Head, router, usePage} from "@inertiajs/react";
 import SectionHeader from "@/Components/molecules/section-header";
 import SectionContent from "@/Components/molecules/section-content";
 import {
+    Alert,
     Box,
     Button,
-    Card,
     FileInput,
     Group,
-    Input,
     NumberInput,
-    Select,
-    Text,
+    Select, Text,
     Textarea,
     TextInput
 } from "@mantine/core";
-import {IconArrowBackUp, IconPencil, IconTrash} from "@tabler/icons-react";
+import {IconArrowBackUp, IconUpload} from "@tabler/icons-react";
 import FormCard from "@/Components/molecules/form-card";
 import FormGroup from "@/Components/molecules/form-group";
-import {useForm} from '@mantine/form';
 import {DateInput} from "@mantine/dates";
 import {EventType} from "@/enums/constants";
-import {Competition, Event, Seminar, SeminarCast} from "@/types"
+import {useEvent} from "@/hooks/useEvent";
 
 
 /**
@@ -41,34 +38,9 @@ interface Props {
 export default function EventCreatePage(props: Props): React.JSX.Element {
     const {} = props
 
-    const form = useForm({
-        initialValues: {
-            name: "",
-            codename: "",
-            description: "",
-            image: "",
-            is_opened: false,
-            price: 0,
-            held_in: "",
-            held_on: new Date(),
-            group_link: "",
-            eventable_type: "",
+    const {flash}: any = usePage().props;
 
-            // For competition
-            max_participants: 1,
-
-            // For seminar
-            theme: "",
-        },
-        validate: {
-            name: (value) => !value.length ? 'Nama wajib diisi' : null,
-            codename: (value) => !value.length ? 'Codename wajib diisi' : null,
-            description: (value) => !value.length ? 'Deskripsi wajib diisi' : null,
-            price: (value) => !value ? 'Harga harus lebih dari 0' : /.*\./.test(String(value)) ? "Harga mengandung titik" : null,
-            group_link: (value) => !value.length ? 'Link grup wajib diisi' : /^(?:https?:\/\/)?(?:www\.)?[A-Za-z0-9.-]+\.[A-Za-z]{2,}(?:\/[^\s]*)?$/.test(value) ? null : "Link harus berupa URL",
-            eventable_type: (value) => !value.length ? 'Jenis event wejib diisi' : null,
-        }
-    })
+    const {form, handleCreate} = useEvent()
 
     return (
         <FestivalLayout>
@@ -86,14 +58,7 @@ export default function EventCreatePage(props: Props): React.JSX.Element {
                     </Group>
                 </Box>
                 <Box pt="0.625rem">
-                    <form onSubmit={form.onSubmit((values, _event) => {
-                        _event.preventDefault()
-                        form.validate();
-
-                        if (form.isValid()) {
-                            router.post(route('events.store'), values)
-                        }
-                    })}>
+                    <form onSubmit={(event) => handleCreate(event)}>
                         <FormCard title="Formulir Event">
                             <FormGroup title="Informasi Event">
                                 <TextInput withAsterisk placeholder="Nama"
@@ -108,7 +73,8 @@ export default function EventCreatePage(props: Props): React.JSX.Element {
                                         ]}/>
                                 <Textarea withAsterisk placeholder="Deskripsi"
                                           label="Deskripsi" {...form.getInputProps('description')}/>
-                                <FileInput placeholder="Unggah logo" label="Logo" {...form.getInputProps('image')} />
+                                <FileInput icon={<IconUpload size={16}/>} placeholder="Unggah logo"
+                                           label="Logo" {...form.getInputProps('image')} />
                                 <Select withAsterisk label="Status pendaftaran"
                                         placeholder="Pilih status pendaftaran" {...form.getInputProps('is_opened')}
                                         data={[
@@ -129,6 +95,8 @@ export default function EventCreatePage(props: Props): React.JSX.Element {
                                 <FormGroup title="Informasi Kompetisi">
                                     <NumberInput withAsterisk description="Masukan angka 1 jika individual."
                                                  label="Maks peserta" {...form.getInputProps('max_participants')} />
+                                    <TextInput withAsterisk description="Masukan url form pengumpulan submission."
+                                               label="URL submission" {...form.getInputProps('submission')} />
                                 </FormGroup>
                             }
                             {form.values.eventable_type == EventType.SEMINAR &&
@@ -136,6 +104,13 @@ export default function EventCreatePage(props: Props): React.JSX.Element {
                                     <TextInput label="Tema" {...form.getInputProps('theme')}/>
                                 </FormGroup>
                             }
+
+                            {flash.message_error && (
+                                <Alert color="red">
+                                    <Text color="red">{flash.message_error}</Text>
+                                </Alert>
+                            )}
+
                             <Group position="right" mt="md">
                                 <Button type="submit">Submit</Button>
                             </Group>

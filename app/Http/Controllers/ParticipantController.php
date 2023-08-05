@@ -36,13 +36,13 @@ class ParticipantController extends Controller
         return Inertia::render('Festival/Participant/Show', ['participant' => $participant]);
     }
 
-    public function destroy($id): RedirectResponse
+    public function destroy(string $id): RedirectResponse
     {
         $participant = User::find($id);
         $participant->delete();
 
         return redirect()
             ->route('participants.index')
-            ->with('info', "Partisipan {$participant->name} berhasil dihapus");
+            ->with('notification_info', "Partisipan {$participant->name} berhasil dihapus");
     }
 }

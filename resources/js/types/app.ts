@@ -33,6 +33,7 @@ export interface DataDisplay {
     data: {
         key: string,
         value: React.ReactNode
+        imagePreview?: boolean
         link?: string
     }[]
 }

@@ -207,6 +207,7 @@ export interface SeminarCast {
 export interface Competition {
     id: string
     max_participants: number
+    submission: string
     created_at: string
     updated_at: string
 

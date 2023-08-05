@@ -25,11 +25,11 @@ class DatabaseSeeder extends Seeder
     {
         $festival_2023 = $this->createFestivals();
         $avatars = $this->createAvatars();
-//        $participants = $this->createParticipants($festival_2023, $avatars);
-//        $managers = $this->createManagers($festival_2023, $avatars);
+        $participants = $this->createParticipants($festival_2023, $avatars);
+        $managers = $this->createManagers($festival_2023, $avatars);
         $admin = $this->createAdmin($festival_2023, $avatars);
-        $this->createEvents($festival_2023, $admin);
-//        $this->createFaqs($festival_2023, $managers);
+        $this->createEvents($festival_2023, $admin, $participants);
+        $this->createFaqs($festival_2023, $managers);
     }
 
     private function createFestivals()
@@ -105,32 +105,32 @@ class DatabaseSeeder extends Seeder
             ]);
     }
 
-    public function createEvents($festival, $admin): void
+    public function createEvents($festival, $admin, $participants): void
     {
         $event_uiux = Event::factory()
             ->hasContactPersons(4)
             ->hasMilestones(4)
-//            ->has(
-//                EventRegistration::factory()
-//                    ->count(10)
-//                    ->has(EventRegistrationPayment::factory())
-//                    ->hasAttached(
-//                        $participants->random(3),
-//                        ['role' => 2]
-//                    )
-//                    ->hasAttached(
-//                        $participants->random(),
-//                        ['role' => 1]
-//                    )
-//            )
-//            ->has(
-//                EventRegistration::factory()
-//                    ->has(EventRegistrationPayment::factory())
-//                    ->hasAttached(
-//                        $admin,
-//                        ['role' => 1]
-//                    )
-//            )
+            ->has(
+                EventRegistration::factory()
+                    ->count(10)
+                    ->has(EventRegistrationPayment::factory())
+                    ->hasAttached(
+                        $participants->random(3),
+                        ['role' => 2]
+                    )
+                    ->hasAttached(
+                        $participants->random(),
+                        ['role' => 1]
+                    )
+            )
+            ->has(
+                EventRegistration::factory()
+                    ->has(EventRegistrationPayment::factory())
+                    ->hasAttached(
+                        $admin,
+                        ['role' => 1]
+                    )
+            )
             ->for(Competition::factory()->create(['max_participants' => 4]), 'eventable')
             ->for($festival)
             ->create([
@@ -142,43 +142,43 @@ class DatabaseSeeder extends Seeder
                 'codename' => 'uiux',
             ]);
 
-        //        $event_competitive_programming = Event::factory()
-        //            ->hasContactPersons(4)
-        //            ->hasMilestones(4)
-        //            ->has(
-        //                EventRegistration::factory()
-        //                    ->count(10)
-        //                    ->has(EventRegistrationPayment::factory())
-        //                    ->hasAttached(
-        //                        $participants->random(3),
-        //                        ['role' => 2]
-        //                    )
-        //                    ->hasAttached(
-        //                        $participants->random(),
-        //                        ['role' => 1]
-        //                    )
-        //            )
-        //            ->for(Competition::factory()->create(['max_participants' => 4]), 'eventable')
-        //            ->for($festival)
-        //            ->create([
-        //                'name' => 'Competitive Programming',
-        //                'is_opened' => false,
-        //                'price' => 40000,
-        //                'codename' => 'comprog'
-        //            ]);
+                $event_competitive_programming = Event::factory()
+                    ->hasContactPersons(4)
+                    ->hasMilestones(4)
+                    ->has(
+                        EventRegistration::factory()
+                            ->count(10)
+                            ->has(EventRegistrationPayment::factory())
+                            ->hasAttached(
+                                $participants->random(3),
+                                ['role' => 2]
+                            )
+                            ->hasAttached(
+                                $participants->random(),
+                                ['role' => 1]
+                            )
+                    )
+                    ->for(Competition::factory()->create(['max_participants' => 4]), 'eventable')
+                    ->for($festival)
+                    ->create([
+                        'name' => 'Competitive Programming',
+                        'is_opened' => false,
+                        'price' => 40000,
+                        'codename' => 'comprog'
+                    ]);
 
         $event_essay = Event::factory()
             ->hasContactPersons(4)
             ->hasMilestones(4)
-//            ->has(
-//                EventRegistration::factory()
-//                    ->count(10)
-//                    ->has(EventRegistrationPayment::factory())
-//                    ->hasAttached(
-//                        $participants->random(),
-//                        ['role' => 0]
-//                    )
-//            )
+            ->has(
+                EventRegistration::factory()
+                    ->count(10)
+                    ->has(EventRegistrationPayment::factory())
+                    ->hasAttached(
+                        $participants->random(),
+                        ['role' => 0]
+                    )
+            )
             ->for(Competition::factory()->create(['max_participants' => 1]), 'eventable')
             ->for($festival)
             ->create([
@@ -193,15 +193,15 @@ class DatabaseSeeder extends Seeder
         $event_poster = Event::factory()
             ->hasContactPersons(4)
             ->hasMilestones(4)
-//            ->has(
-//                EventRegistration::factory()
-//                    ->count(10)
-//                    ->has(EventRegistrationPayment::factory())
-//                    ->hasAttached(
-//                        $participants->random(),
-//                        ['role' => 0]
-//                    )
-//            )
+            ->has(
+                EventRegistration::factory()
+                    ->count(10)
+                    ->has(EventRegistrationPayment::factory())
+                    ->hasAttached(
+                        $participants->random(),
+                        ['role' => 0]
+                    )
+            )
             ->for(Competition::factory()->create(['max_participants' => 1]), 'eventable')
             ->for($festival)
             ->create([
@@ -221,15 +221,15 @@ class DatabaseSeeder extends Seeder
             ->hasMilestones(4)
             ->for($festival)
             ->for($seminar, 'eventable')
-//            ->has(
-//                EventRegistration::factory()
-//                    ->count(10)
-//                    ->has(EventRegistrationPayment::factory())
-//                    ->hasAttached(
-//                        $participants->random(),
-//                        ['role' => 0]
-//                    )
-//            )
+            ->has(
+                EventRegistration::factory()
+                    ->count(10)
+                    ->has(EventRegistrationPayment::factory())
+                    ->hasAttached(
+                        $participants->random(),
+                        ['role' => 0]
+                    )
+            )
             ->create([
                 'name' => 'Seminar',
                 'is_opened' => false,

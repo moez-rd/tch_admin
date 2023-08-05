@@ -27,6 +27,19 @@ Route::middleware('auth')->group(function () {
         Route::resource('/payments', \App\Http\Controllers\EventRegistrationPaymentController::class)->missing(fn() => redirect()->route('payments.index'));
         Route::resource('/faqs', \App\Http\Controllers\FaqController::class)->missing(fn() => redirect()->route('faqs.index'));
 
+        Route::resource('/seminar-casts', \App\Http\Controllers\SeminarCastController::class)->only('destroy');
+        Route::resource('/milestones', \App\Http\Controllers\MilestoneController::class)->only('destroy');
+        Route::resource('/contact-persons', \App\Http\Controllers\ContactPersonController::class)->only('destroy');
+
+        Route::post('/festivals/{festival:id}/milestones', [\App\Http\Controllers\FestivalController::class, 'addMilestone'])->name('festivals.milestones.store');
+        Route::post('/festivals/{festival:id}/contact-persons', [\App\Http\Controllers\FestivalController::class, 'addContactPerson'])->name('festivals.contact-persons.store');
+
+        Route::post('/events/{event:id}/milestones', [\App\Http\Controllers\EventController::class, 'addMilestone'])->name('events.milestones.store');
+        Route::post('/events/{event:id}/contact-persons', [\App\Http\Controllers\EventController::class, 'addContactPerson'])->name('events.contact-persons.store');
+        Route::post('/events/{event:id}/seminar-casts', [\App\Http\Controllers\EventController::class, 'addSeminarCast'])->name('events.seminar-casts.store');
+
+        Route::patch('/registrations/{registration:id}/accept', [\App\Http\Controllers\EventRegistrationController::class, 'acceptPayment'])->name('registrations.update.accept');
+        Route::patch('/registrations/{registration:id}/reject', [\App\Http\Controllers\EventRegistrationController::class, 'rejectPayment'])->name('registrations.update.reject');
     });
 
     Route::prefix('/options')->group(function () {
