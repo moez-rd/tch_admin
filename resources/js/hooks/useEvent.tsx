@@ -59,7 +59,7 @@ export function useEvent() {
         form.validate();
 
         if (form.isValid()) {
-            router.post(route('faqs.store'), form.values)
+            router.post(route('events.store'), form.values)
         }
     }
 

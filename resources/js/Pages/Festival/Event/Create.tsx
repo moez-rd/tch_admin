@@ -58,7 +58,7 @@ export default function EventCreatePage(props: Props): React.JSX.Element {
                     </Group>
                 </Box>
                 <Box pt="0.625rem">
-                    <form onSubmit={(event) => handleCreate(event)}>
+                    <form onSubmit={(e) => handleCreate(e)}>
                         <FormCard title="Formulir Event">
                             <FormGroup title="Informasi Event">
                                 <TextInput withAsterisk placeholder="Nama"

@@ -1,1 +1,0 @@
-import{h as t,i as r}from"./app-79a61383.js";import e from"./Layout-9116d95e.js";import"./index-2ddde155.js";import"./Image-620e4505.js";function m(i){return t(e,{children:t(r,{title:"Events"})})}export{m as default};
