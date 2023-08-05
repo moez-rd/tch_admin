@@ -25,11 +25,11 @@ class DatabaseSeeder extends Seeder
     {
         $festival_2023 = $this->createFestivals();
         $avatars = $this->createAvatars();
-        $participants = $this->createParticipants($festival_2023, $avatars);
-        $managers = $this->createManagers($festival_2023, $avatars);
+        // $participants = $this->createParticipants($festival_2023, $avatars);
+        // $managers = $this->createManagers($festival_2023, $avatars);
         $admin = $this->createAdmin($festival_2023, $avatars);
-        $this->createEvents($festival_2023, $admin, $participants);
-        $this->createFaqs($festival_2023, $managers);
+        // $this->createEvents($festival_2023, $admin, $participants);
+        // $this->createFaqs($festival_2023, $managers);
     }
 
     private function createFestivals()
@@ -40,25 +40,25 @@ class DatabaseSeeder extends Seeder
             ->create([
                 'period' => '2023',
                 'name' => 'Technology Festival #4',
-                'theme' => 'Green Technologies: Bla2',
-                'description' => fake()->paragraph(),
-                'start_date' => new Carbon('2023-08-02'),
-                'end_date' => new Carbon('2023-08-24'),
+                'theme' => 'Green Technologies: Changing the World with Digital Innovation',
+                'description' => "Technology Festival atau yang biasa dikenal dengan Technofest adalah forum kompetitif berskala nasional yang mewadahi minat dan bakat kaum muda dalam dunia teknologi. Ajang kompetitif yang disediakan adalah lomba essay, poster, dan UI/UX. Technofest juga memberikan seminar untuk menyalurkan pengetahuan dan informasi yang berkembang pesat kepada generasi muda dengan tujuan untuk memotivasi kaum muda agar dapat berinovasi dan memajukan teknologi di Indonesia.",
+                'start_date' => new Carbon('2023-08-07'),
+                'end_date' => new Carbon('2023-09-16'),
                 'is_active' => true,
             ]);
 
-        $festival_2024 = Festival::factory()
-            ->hasContactPersons(4)
-            ->hasMilestones(4)
-            ->create([
-                'period' => '2024',
-                'name' => 'Technology Festival #5',
-                'theme' => 'Black Technologies: Dark Web Access',
-                'description' => fake()->paragraph(),
-                'start_date' => new Carbon('2024-08-02'),
-                'end_date' => new Carbon('2024-08-24'),
-                'is_active' => false,
-            ]);
+        // $festival_2024 = Festival::factory()
+        //     ->hasContactPersons(4)
+        //     ->hasMilestones(4)
+        //     ->create([
+        //         'period' => '2024',
+        //         'name' => 'Technology Festival #5',
+        //         'theme' => 'Black Technologies: Dark Web Access',
+        //         'description' => fake()->paragraph(),
+        //         'start_date' => new Carbon('2024-08-02'),
+        //         'end_date' => new Carbon('2024-08-24'),
+        //         'is_active' => false,
+        //     ]);
 
         return $festival_2023;
     }
@@ -96,10 +96,10 @@ class DatabaseSeeder extends Seeder
         return User::factory()
             ->hasAttached($festival)
             ->create([
-                'name' => 'Rahmat',
-                'email' => 'slow9ie@gmail.com',
+                'name' => 'Admin',
+                'email' => 'admin@gmail.com',
                 'role' => config('constants.user_role.admin'),
-                'password' => 'qwerty',
+                'password' => 'margarin029847q2',
                 'avatar' => $avatars->random()->image,
                 'selected_festival' => $festival->id,
             ]);
