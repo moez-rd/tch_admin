@@ -255,7 +255,7 @@ const getEventDisplay = (event: Event<Competition|Seminar>) => {
             },
             {
                 key: "Jumlah pendaftaran",
-                value: `${event.event_registrations_count || 0} pendaftaran`
+                value: `${Number(event.event_registrations_count) || 0} pendaftaran`
             },
             {
                 key: "Dibuat pada",
