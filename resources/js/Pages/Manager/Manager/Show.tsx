@@ -12,6 +12,7 @@ import DescriptionList from "@/Components/molecules/description-list";
 import {PageProps} from "@/types";
 import {useParticipant} from "@/hooks/useParticipant";
 import { useManager } from "@/hooks/useManager";
+import ManagerLayout from "../Layout";
 
 /**
  * interface
@@ -33,7 +34,7 @@ export default function ParticipantShowPage(props: Props): React.JSX.Element {
 
 
     return (
-        <FestivalLayout>
+        <ManagerLayout>
             <Head title="Manajer"/>
 
             <SectionHeader title="Detail Manajer" subTitle="Kelola Manajer"/>
@@ -50,6 +51,6 @@ export default function ParticipantShowPage(props: Props): React.JSX.Element {
                     <DescriptionList title={manager.name} data={getManagerDisplay(manager)}/>
                 </Box>
             </SectionContent>
-        </FestivalLayout>
+        </ManagerLayout>
     )
 }

@@ -12,9 +12,7 @@ class ManagerController extends Controller
     public function index(Request $request): Response
     {
 
-        $managers = User::
-            where('role', config('constants.user_role.manager'))
-            ->whereRelation('festivals', 'festival_id', $request->user()->selected_festival)
+        $managers = User::where('role', config('constants.user_role.manager'))
             ->orderByDesc('created_at')
             ->get();
 

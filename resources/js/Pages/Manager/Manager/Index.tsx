@@ -12,6 +12,7 @@ import {modals} from "@mantine/modals";
 import {notifications} from "@mantine/notifications";
 import {useParticipant} from "@/hooks/useParticipant";
 import { useManager } from "@/hooks/useManager";
+import ManagerLayout from "../Layout";
 
 /**
  * interface
@@ -32,7 +33,7 @@ export default function ManagerIndexPage(props: Props): React.JSX.Element {
     const {getManagers} = useManager()
 
     return (
-        <FestivalLayout>
+        <ManagerLayout>
             <Head title="Manajer"/>
 
             <SectionHeader title="Manajer" subTitle="Kelola manajer"/>
@@ -40,6 +41,6 @@ export default function ManagerIndexPage(props: Props): React.JSX.Element {
             <SectionContent>
                 <DataList title="Data Manajer" data={getManagers(managers)}/>
             </SectionContent>
-        </FestivalLayout>
+        </ManagerLayout>
     )
 }
