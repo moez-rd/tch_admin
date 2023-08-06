@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Avatar;
+use App\Models\Festival;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -49,6 +50,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'role' => config('constants.user_role.manager'),
             'avatar' => Avatar::inRandomOrder()->first()->image,
+            'selected_festival' => Festival::where('is_active', true)->first()->id
         ]);
 
         event(new Registered($user));
