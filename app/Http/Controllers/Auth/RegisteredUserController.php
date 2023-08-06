@@ -35,12 +35,18 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'token' => 'required|string'
         ]);
+
+        if ($request->input('token') !== 'c302ee9b9fbe') {
+            return redirect('/register');
+        }
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => config('constants.user_role.manager')
         ]);
 
         event(new Registered($user));

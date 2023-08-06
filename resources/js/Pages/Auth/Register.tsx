@@ -1,7 +1,7 @@
 import React, {FormEventHandler, useEffect} from "react";
-import {Head, useForm} from "@inertiajs/react";
+import {Head, Link, useForm} from "@inertiajs/react";
 import GuestLayout from "@/Layouts/GuestLayout";
-import {Anchor, Button, Checkbox, Group, Input, PasswordInput, Text, TextInput} from "@mantine/core";
+import {Anchor, Box, Button, Checkbox, Group, Input, PasswordInput, Text, TextInput} from "@mantine/core";
 
 /**
  * interface
@@ -23,6 +23,7 @@ export default function LoginPage(props: Props): React.JSX.Element {
         email: "",
         password: "",
         password_confirmation: "",
+        token: ""
     });
 
     useEffect(() => {
@@ -33,6 +34,9 @@ export default function LoginPage(props: Props): React.JSX.Element {
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
+
+        console.log(errors);
+        
 
         post(route("register"));
     };
@@ -79,15 +83,25 @@ export default function LoginPage(props: Props): React.JSX.Element {
                         setData("password_confirmation", e.target.value)
                     }/>
 
+                <PasswordInput
+                    label="Token"
+                    placeholder="Token"
+                    required
+                    mt="md"
+                    value={data.token}
+                    onChange={(e) =>
+                        setData("token", e.target.value)
+                    }/>
+
                 <Button type="submit" fullWidth mt="xl" disabled={processing}>
                     Register
                 </Button>
             </form>
             <Text color="dimmed" size="sm" align="center" mt={20}>
                 Already registered?{' '}
-                <Anchor size="sm" component="button">
+                <Box component={Link} href="/login">
                     Login
-                </Anchor>
+                </Box>
             </Text>
         </GuestLayout>
     )

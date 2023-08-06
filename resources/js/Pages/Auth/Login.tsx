@@ -1,7 +1,7 @@
 import React, {FormEventHandler, useEffect} from "react";
-import {Head, useForm} from "@inertiajs/react";
+import {Head, Link, useForm} from "@inertiajs/react";
 import GuestLayout from "@/Layouts/GuestLayout";
-import {Anchor, Button, Checkbox, Group, Input, PasswordInput, Text, TextInput} from "@mantine/core";
+import {Anchor, Box, Button, Checkbox, Group, Input, PasswordInput, Text, TextInput} from "@mantine/core";
 
 /**
  * interface
@@ -86,9 +86,9 @@ export default function LoginPage(props: Props): React.JSX.Element {
             </form>
             <Text color="dimmed" size="sm" align="center" mt={20}>
                 Do not have an account yet?{' '}
-                <Anchor size="sm" component="button">
+                <Box component={Link} href="/register">
                     Create account
-                </Anchor>
+                </Box>
             </Text>
         </GuestLayout>
     )
