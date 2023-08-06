@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('/events', \App\Http\Controllers\EventController::class)->missing(fn() => redirect()->route('events.index'));
         Route::resource('/registrations', \App\Http\Controllers\EventRegistrationController::class)->missing(fn() => redirect()->route('registrations.index'));
         Route::resource('/participants', \App\Http\Controllers\ParticipantController::class)->missing(fn() => redirect()->route('participants.index'));
+        Route::resource('/managers', \App\Http\Controllers\ManagerController::class)->missing(fn() => redirect()->route('participants.index'));
         Route::resource('/payments', \App\Http\Controllers\EventRegistrationPaymentController::class)->missing(fn() => redirect()->route('payments.index'));
         Route::resource('/faqs', \App\Http\Controllers\FaqController::class)->missing(fn() => redirect()->route('faqs.index'));
 
