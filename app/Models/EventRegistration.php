@@ -17,6 +17,7 @@ class EventRegistration extends Model
         'event_id',
         'name',
         'confirmed',
+        'participation_method'
     ];
 
     protected static function boot(): void

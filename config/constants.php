@@ -48,4 +48,9 @@ return [
         'high_school' => 0,
         'college' => 1,
     ],
+
+    'participation_method' => [
+        'online' => 0,
+        'offline' => 1
+    ]
 ];

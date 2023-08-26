@@ -15,12 +15,9 @@ class Seminar extends Model
 
     protected $fillable = [
         'theme',
+        'offline_price',
+        'online_price'
     ];
-
-    //    public function event(): BelongsTo
-    //    {
-    //        return $this->belongsTo(Event::class);
-    //    }
 
     public function event(): MorphOne
     {
