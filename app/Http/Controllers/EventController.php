@@ -21,6 +21,7 @@ class EventController extends Controller
         $events = Event::with(['eventable'])
             ->where('festival_id', $request->user()->selected_festival)
             ->orderByDesc('updated_at')
+            ->withCount('eventRegistrations')
             ->get();
 
         return Inertia::render('Festival/Event/Index', [
