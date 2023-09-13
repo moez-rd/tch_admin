@@ -1,0 +1,1 @@
+import{i as n}from"./app-e52bfb8e.js";import{A as r}from"./index-d6a92397.js";import"./Image-246037d0.js";const t=[{label:"Manajer",link:route("managers.index"),basePath:"/manager/managers"}];function m(a){const{children:e}=a;return n(r,{sidebarLinks:t,children:e})}export{m as default};
