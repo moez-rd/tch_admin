@@ -29,12 +29,12 @@ export default function DashboardPage(props: Props): React.JSX.Element {
             <SectionHeader title="Dashboard" subTitle=""/>
 
             <div>
-                <Title order={2}>Pendaftar Seminar (Offline)</Title>
+                <Title order={2}>Pendaftar Seminar (Online)</Title>
                 <Text size="40pt">{seminar_registration_online_count}</Text>
             </div>
 
             <div>
-                <Title order={2}>Pendaftar Seminar (Online)</Title>
+                <Title order={2}>Pendaftar Seminar (Offline)</Title>
                 <Text size="40pt">{seminar_registration_offline_count}</Text>
             </div>
         </AuthenticatedLayout>

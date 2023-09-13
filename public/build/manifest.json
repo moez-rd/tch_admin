@@ -1,159 +1,159 @@
 {
-  "_Card-34ab72a4.js": {
-    "file": "assets/Card-34ab72a4.js",
+  "_Card-2c83e191.js": {
+    "file": "assets/Card-2c83e191.js",
     "imports": [
       "resources/js/app.tsx"
     ]
   },
-  "_Center-b2ffc25f.js": {
-    "file": "assets/Center-b2ffc25f.js",
+  "_Center-72897897.js": {
+    "file": "assets/Center-72897897.js",
     "imports": [
       "resources/js/app.tsx"
     ]
   },
-  "_IconAdjustments-c1cb00b3.js": {
-    "file": "assets/IconAdjustments-c1cb00b3.js",
+  "_IconAdjustments-44aedc91.js": {
+    "file": "assets/IconAdjustments-44aedc91.js",
     "imports": [
       "resources/js/app.tsx"
     ]
   },
-  "_IconArrowBackUp-b7b666d4.js": {
-    "file": "assets/IconArrowBackUp-b7b666d4.js",
+  "_IconArrowBackUp-db462143.js": {
+    "file": "assets/IconArrowBackUp-db462143.js",
     "imports": [
       "resources/js/app.tsx"
     ]
   },
-  "_IconPencil-77287567.js": {
-    "file": "assets/IconPencil-77287567.js",
+  "_IconPencil-d7539f12.js": {
+    "file": "assets/IconPencil-d7539f12.js",
     "imports": [
       "resources/js/app.tsx"
     ]
   },
-  "_IconPlus-82a702dc.js": {
-    "file": "assets/IconPlus-82a702dc.js",
+  "_IconPlus-878f3c4d.js": {
+    "file": "assets/IconPlus-878f3c4d.js",
     "imports": [
       "resources/js/app.tsx"
     ]
   },
-  "_IconTrash-b04a384b.js": {
-    "file": "assets/IconTrash-b04a384b.js",
+  "_IconTrash-77a67d7f.js": {
+    "file": "assets/IconTrash-77a67d7f.js",
     "imports": [
       "resources/js/app.tsx"
     ]
   },
-  "_Image-a5c71318.js": {
-    "file": "assets/Image-a5c71318.js",
+  "_Image-8943cb57.js": {
+    "file": "assets/Image-8943cb57.js",
     "imports": [
       "resources/js/app.tsx"
     ]
   },
-  "_Tabs-bd9e75f9.js": {
-    "file": "assets/Tabs-bd9e75f9.js",
+  "_Tabs-d8c7a1e4.js": {
+    "file": "assets/Tabs-d8c7a1e4.js",
     "imports": [
       "resources/js/app.tsx",
-      "_index-65e86aa0.js"
+      "_index-dddf9925.js"
     ]
   },
-  "_Title-fa50aa69.js": {
-    "file": "assets/Title-fa50aa69.js",
+  "_Title-157ff91c.js": {
+    "file": "assets/Title-157ff91c.js",
     "imports": [
       "resources/js/app.tsx"
     ]
   },
-  "_index-0a89616f.js": {
-    "file": "assets/index-0a89616f.js",
+  "_index-0e00de42.js": {
+    "file": "assets/index-0e00de42.js",
     "imports": [
       "resources/js/app.tsx",
-      "_Card-34ab72a4.js",
-      "_Title-fa50aa69.js"
+      "_Title-157ff91c.js"
     ]
   },
-  "_index-3365b2c6.js": {
-    "file": "assets/index-3365b2c6.js",
+  "_index-146b089c.js": {
+    "file": "assets/index-146b089c.js",
     "imports": [
       "resources/js/app.tsx",
-      "_Card-34ab72a4.js",
-      "_Title-fa50aa69.js"
+      "_Center-72897897.js",
+      "_Image-8943cb57.js",
+      "_Title-157ff91c.js"
     ]
   },
-  "_index-3e187b9e.js": {
-    "file": "assets/index-3e187b9e.js",
+  "_index-1c3132f8.js": {
+    "file": "assets/index-1c3132f8.js",
     "imports": [
       "resources/js/app.tsx",
-      "_Center-b2ffc25f.js",
-      "_Image-a5c71318.js",
-      "_Title-fa50aa69.js"
+      "_Card-2c83e191.js"
     ]
   },
-  "_index-65e86aa0.js": {
-    "file": "assets/index-65e86aa0.js",
+  "_index-8d0c12dc.js": {
+    "file": "assets/index-8d0c12dc.js",
     "imports": [
       "resources/js/app.tsx",
-      "_Image-a5c71318.js"
+      "_Card-2c83e191.js",
+      "_Title-157ff91c.js"
     ]
   },
-  "_index-78b7d0e6.js": {
-    "file": "assets/index-78b7d0e6.js",
+  "_index-cdfa0632.js": {
+    "file": "assets/index-cdfa0632.js",
     "imports": [
       "resources/js/app.tsx",
-      "_Title-fa50aa69.js"
+      "_Card-2c83e191.js",
+      "_Title-157ff91c.js"
     ]
   },
-  "_index-7970aa7f.js": {
-    "file": "assets/index-7970aa7f.js",
+  "_index-dddf9925.js": {
+    "file": "assets/index-dddf9925.js",
     "imports": [
       "resources/js/app.tsx",
-      "_Card-34ab72a4.js",
-      "_index-65e86aa0.js",
-      "_Title-fa50aa69.js",
-      "_Center-b2ffc25f.js"
+      "_Image-8943cb57.js"
     ]
   },
-  "_index-9706cbae.js": {
-    "file": "assets/index-9706cbae.js",
-    "imports": [
-      "resources/js/app.tsx",
-      "_Card-34ab72a4.js"
-    ]
-  },
-  "_index-ee33f8ae.js": {
-    "file": "assets/index-ee33f8ae.js",
+  "_index-ea9eac82.js": {
+    "file": "assets/index-ea9eac82.js",
     "imports": [
       "resources/js/app.tsx"
     ]
   },
-  "_useEvent-6c95b371.js": {
-    "file": "assets/useEvent-6c95b371.js",
+  "_index-faedc057.js": {
+    "file": "assets/index-faedc057.js",
     "imports": [
       "resources/js/app.tsx",
-      "_index-9706cbae.js",
-      "_index-65e86aa0.js"
+      "_Card-2c83e191.js",
+      "_index-dddf9925.js",
+      "_Title-157ff91c.js",
+      "_Center-72897897.js"
     ]
   },
-  "_useFaq-e6e1b3e3.js": {
-    "file": "assets/useFaq-e6e1b3e3.js",
-    "imports": [
-      "resources/js/app.tsx"
-    ]
-  },
-  "_useManager-59833505.js": {
-    "file": "assets/useManager-59833505.js",
-    "imports": [
-      "resources/js/app.tsx"
-    ]
-  },
-  "_useParticipant-b97718a8.js": {
-    "file": "assets/useParticipant-b97718a8.js",
-    "imports": [
-      "resources/js/app.tsx"
-    ]
-  },
-  "_useRegistration-f6bfec74.js": {
-    "file": "assets/useRegistration-f6bfec74.js",
+  "_useEvent-220dfea1.js": {
+    "file": "assets/useEvent-220dfea1.js",
     "imports": [
       "resources/js/app.tsx",
-      "_index-9706cbae.js",
-      "_index-65e86aa0.js"
+      "_index-1c3132f8.js",
+      "_index-dddf9925.js"
+    ]
+  },
+  "_useFaq-fb8b68ce.js": {
+    "file": "assets/useFaq-fb8b68ce.js",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "_useManager-c71a0709.js": {
+    "file": "assets/useManager-c71a0709.js",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "_useParticipant-f5f54660.js": {
+    "file": "assets/useParticipant-f5f54660.js",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "_useRegistration-b17f3aad.js": {
+    "file": "assets/useRegistration-b17f3aad.js",
+    "imports": [
+      "resources/js/app.tsx",
+      "_index-1c3132f8.js",
+      "_index-dddf9925.js"
     ]
   },
   "node_modules/@fontsource/poppins/files/poppins-devanagari-300-normal.woff": {
@@ -301,327 +301,327 @@
     "src": "node_modules/@fontsource/poppins/files/poppins-latin-ext-800-normal.woff2"
   },
   "resources/js/Pages/Auth/Login.tsx": {
-    "file": "assets/Login-fd79bcdc.js",
+    "file": "assets/Login-fbc8d718.js",
     "imports": [
       "resources/js/app.tsx",
-      "_index-3e187b9e.js",
-      "_Center-b2ffc25f.js",
-      "_Image-a5c71318.js",
-      "_Title-fa50aa69.js"
+      "_index-146b089c.js",
+      "_Center-72897897.js",
+      "_Image-8943cb57.js",
+      "_Title-157ff91c.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/Login.tsx"
   },
   "resources/js/Pages/Auth/Register.tsx": {
-    "file": "assets/Register-7b55112a.js",
+    "file": "assets/Register-b6eeb43a.js",
     "imports": [
       "resources/js/app.tsx",
-      "_index-3e187b9e.js",
-      "_Center-b2ffc25f.js",
-      "_Image-a5c71318.js",
-      "_Title-fa50aa69.js"
+      "_index-146b089c.js",
+      "_Center-72897897.js",
+      "_Image-8943cb57.js",
+      "_Title-157ff91c.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/Register.tsx"
   },
   "resources/js/Pages/Dashboard.tsx": {
-    "file": "assets/Dashboard-d70c4c80.js",
+    "file": "assets/Dashboard-d41e918b.js",
     "imports": [
       "resources/js/app.tsx",
-      "_index-65e86aa0.js",
-      "_index-78b7d0e6.js",
-      "_Title-fa50aa69.js",
-      "_Image-a5c71318.js"
+      "_index-dddf9925.js",
+      "_index-0e00de42.js",
+      "_Title-157ff91c.js",
+      "_Image-8943cb57.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Dashboard.tsx"
   },
   "resources/js/Pages/Festival/Event/Create.tsx": {
-    "file": "assets/Create-5f7072ca.js",
+    "file": "assets/Create-b1091502.js",
     "imports": [
       "resources/js/app.tsx",
       "resources/js/Pages/Festival/Layout.tsx",
-      "_index-78b7d0e6.js",
-      "_index-ee33f8ae.js",
-      "_index-0a89616f.js",
-      "_useEvent-6c95b371.js",
-      "_IconArrowBackUp-b7b666d4.js",
-      "_index-65e86aa0.js",
-      "_Image-a5c71318.js",
-      "_Title-fa50aa69.js",
-      "_Card-34ab72a4.js",
-      "_index-9706cbae.js"
+      "_index-0e00de42.js",
+      "_index-ea9eac82.js",
+      "_index-8d0c12dc.js",
+      "_useEvent-220dfea1.js",
+      "_IconArrowBackUp-db462143.js",
+      "_index-dddf9925.js",
+      "_Image-8943cb57.js",
+      "_Title-157ff91c.js",
+      "_Card-2c83e191.js",
+      "_index-1c3132f8.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Festival/Event/Create.tsx"
   },
   "resources/js/Pages/Festival/Event/Edit.tsx": {
-    "file": "assets/Edit-dbe260f5.js",
+    "file": "assets/Edit-39fb3a86.js",
     "imports": [
       "resources/js/app.tsx",
       "resources/js/Pages/Festival/Layout.tsx",
-      "_index-65e86aa0.js",
-      "_Image-a5c71318.js"
+      "_index-dddf9925.js",
+      "_Image-8943cb57.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Festival/Event/Edit.tsx"
   },
   "resources/js/Pages/Festival/Event/Index.tsx": {
-    "file": "assets/Index-9f557e28.js",
+    "file": "assets/Index-11285a9e.js",
     "imports": [
       "resources/js/app.tsx",
       "resources/js/Pages/Festival/Layout.tsx",
-      "_index-78b7d0e6.js",
-      "_index-ee33f8ae.js",
-      "_index-7970aa7f.js",
-      "_useEvent-6c95b371.js",
-      "_Tabs-bd9e75f9.js",
-      "_IconPlus-82a702dc.js",
-      "_index-65e86aa0.js",
-      "_IconAdjustments-c1cb00b3.js",
-      "_Title-fa50aa69.js",
-      "_Card-34ab72a4.js",
-      "_Center-b2ffc25f.js",
-      "_index-9706cbae.js",
-      "_Image-a5c71318.js"
+      "_index-0e00de42.js",
+      "_index-ea9eac82.js",
+      "_index-faedc057.js",
+      "_useEvent-220dfea1.js",
+      "_Tabs-d8c7a1e4.js",
+      "_IconPlus-878f3c4d.js",
+      "_index-dddf9925.js",
+      "_IconAdjustments-44aedc91.js",
+      "_Title-157ff91c.js",
+      "_Card-2c83e191.js",
+      "_Center-72897897.js",
+      "_index-1c3132f8.js",
+      "_Image-8943cb57.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Festival/Event/Index.tsx"
   },
   "resources/js/Pages/Festival/Event/Show.tsx": {
-    "file": "assets/Show-4d80c7a9.js",
+    "file": "assets/Show-3f68362e.js",
     "imports": [
       "resources/js/app.tsx",
       "resources/js/Pages/Festival/Layout.tsx",
-      "_index-78b7d0e6.js",
-      "_index-ee33f8ae.js",
-      "_index-3365b2c6.js",
-      "_useEvent-6c95b371.js",
-      "_IconArrowBackUp-b7b666d4.js",
-      "_IconPencil-77287567.js",
-      "_IconTrash-b04a384b.js",
-      "_index-65e86aa0.js",
-      "_IconAdjustments-c1cb00b3.js",
-      "_IconPlus-82a702dc.js",
-      "_Title-fa50aa69.js",
-      "_Card-34ab72a4.js",
-      "_index-9706cbae.js",
-      "_Image-a5c71318.js"
+      "_index-0e00de42.js",
+      "_index-ea9eac82.js",
+      "_index-cdfa0632.js",
+      "_useEvent-220dfea1.js",
+      "_IconArrowBackUp-db462143.js",
+      "_IconPencil-d7539f12.js",
+      "_IconTrash-77a67d7f.js",
+      "_index-dddf9925.js",
+      "_IconAdjustments-44aedc91.js",
+      "_IconPlus-878f3c4d.js",
+      "_Title-157ff91c.js",
+      "_Card-2c83e191.js",
+      "_index-1c3132f8.js",
+      "_Image-8943cb57.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Festival/Event/Show.tsx"
   },
   "resources/js/Pages/Festival/Faq/Create.tsx": {
-    "file": "assets/Create-931d7b8a.js",
+    "file": "assets/Create-35799499.js",
     "imports": [
       "resources/js/app.tsx",
       "resources/js/Pages/Festival/Layout.tsx",
-      "_index-78b7d0e6.js",
-      "_index-ee33f8ae.js",
-      "_index-0a89616f.js",
-      "_useFaq-e6e1b3e3.js",
-      "_IconArrowBackUp-b7b666d4.js",
-      "_index-65e86aa0.js",
-      "_Image-a5c71318.js",
-      "_Title-fa50aa69.js",
-      "_Card-34ab72a4.js"
+      "_index-0e00de42.js",
+      "_index-ea9eac82.js",
+      "_index-8d0c12dc.js",
+      "_useFaq-fb8b68ce.js",
+      "_IconArrowBackUp-db462143.js",
+      "_index-dddf9925.js",
+      "_Image-8943cb57.js",
+      "_Title-157ff91c.js",
+      "_Card-2c83e191.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Festival/Faq/Create.tsx"
   },
   "resources/js/Pages/Festival/Faq/Edit.tsx": {
-    "file": "assets/Edit-601de696.js",
+    "file": "assets/Edit-f4389a66.js",
     "imports": [
       "resources/js/app.tsx",
       "resources/js/Pages/Festival/Layout.tsx",
-      "_index-65e86aa0.js",
-      "_Image-a5c71318.js"
+      "_index-dddf9925.js",
+      "_Image-8943cb57.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Festival/Faq/Edit.tsx"
   },
   "resources/js/Pages/Festival/Faq/Index.tsx": {
-    "file": "assets/Index-59ccf28d.js",
+    "file": "assets/Index-3b0a54f4.js",
     "imports": [
       "resources/js/app.tsx",
       "resources/js/Pages/Festival/Layout.tsx",
-      "_index-78b7d0e6.js",
-      "_index-ee33f8ae.js",
-      "_index-7970aa7f.js",
-      "_useFaq-e6e1b3e3.js",
-      "_IconPlus-82a702dc.js",
-      "_index-65e86aa0.js",
-      "_Image-a5c71318.js",
-      "_Title-fa50aa69.js",
-      "_Card-34ab72a4.js",
-      "_Center-b2ffc25f.js"
+      "_index-0e00de42.js",
+      "_index-ea9eac82.js",
+      "_index-faedc057.js",
+      "_useFaq-fb8b68ce.js",
+      "_IconPlus-878f3c4d.js",
+      "_index-dddf9925.js",
+      "_Image-8943cb57.js",
+      "_Title-157ff91c.js",
+      "_Card-2c83e191.js",
+      "_Center-72897897.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Festival/Faq/Index.tsx"
   },
   "resources/js/Pages/Festival/Faq/Show.tsx": {
-    "file": "assets/Show-54bf6acb.js",
+    "file": "assets/Show-aa1e4e84.js",
     "imports": [
       "resources/js/app.tsx",
       "resources/js/Pages/Festival/Layout.tsx",
-      "_index-78b7d0e6.js",
-      "_index-ee33f8ae.js",
-      "_index-3365b2c6.js",
-      "_useFaq-e6e1b3e3.js",
-      "_IconArrowBackUp-b7b666d4.js",
-      "_IconPencil-77287567.js",
-      "_IconTrash-b04a384b.js",
-      "_index-65e86aa0.js",
-      "_Image-a5c71318.js",
-      "_Title-fa50aa69.js",
-      "_Card-34ab72a4.js"
+      "_index-0e00de42.js",
+      "_index-ea9eac82.js",
+      "_index-cdfa0632.js",
+      "_useFaq-fb8b68ce.js",
+      "_IconArrowBackUp-db462143.js",
+      "_IconPencil-d7539f12.js",
+      "_IconTrash-77a67d7f.js",
+      "_index-dddf9925.js",
+      "_Image-8943cb57.js",
+      "_Title-157ff91c.js",
+      "_Card-2c83e191.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Festival/Faq/Show.tsx"
   },
   "resources/js/Pages/Festival/Festival/Index.tsx": {
-    "file": "assets/Index-b68e191c.js",
+    "file": "assets/Index-ba8d8d38.js",
     "imports": [
       "resources/js/app.tsx",
       "resources/js/Pages/Festival/Layout.tsx",
-      "_index-78b7d0e6.js",
-      "_index-ee33f8ae.js",
-      "_index-65e86aa0.js",
-      "_Image-a5c71318.js",
-      "_Title-fa50aa69.js"
+      "_index-0e00de42.js",
+      "_index-ea9eac82.js",
+      "_index-dddf9925.js",
+      "_Image-8943cb57.js",
+      "_Title-157ff91c.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Festival/Festival/Index.tsx"
   },
   "resources/js/Pages/Festival/Layout.tsx": {
-    "file": "assets/Layout-5fbb6c11.js",
+    "file": "assets/Layout-a993b8b4.js",
     "imports": [
       "resources/js/app.tsx",
-      "_index-65e86aa0.js",
-      "_Image-a5c71318.js"
+      "_index-dddf9925.js",
+      "_Image-8943cb57.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Festival/Layout.tsx"
   },
   "resources/js/Pages/Festival/Participant/Index.tsx": {
-    "file": "assets/Index-a3179a30.js",
+    "file": "assets/Index-aba9cba2.js",
     "imports": [
       "resources/js/app.tsx",
       "resources/js/Pages/Festival/Layout.tsx",
-      "_index-78b7d0e6.js",
-      "_index-ee33f8ae.js",
-      "_index-7970aa7f.js",
-      "_useParticipant-b97718a8.js",
-      "_index-65e86aa0.js",
-      "_Image-a5c71318.js",
-      "_Title-fa50aa69.js",
-      "_Card-34ab72a4.js",
-      "_Center-b2ffc25f.js"
+      "_index-0e00de42.js",
+      "_index-ea9eac82.js",
+      "_index-faedc057.js",
+      "_useParticipant-f5f54660.js",
+      "_index-dddf9925.js",
+      "_Image-8943cb57.js",
+      "_Title-157ff91c.js",
+      "_Card-2c83e191.js",
+      "_Center-72897897.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Festival/Participant/Index.tsx"
   },
   "resources/js/Pages/Festival/Participant/Show.tsx": {
-    "file": "assets/Show-774164f7.js",
+    "file": "assets/Show-1e33c0f8.js",
     "imports": [
       "resources/js/app.tsx",
       "resources/js/Pages/Festival/Layout.tsx",
-      "_index-78b7d0e6.js",
-      "_index-ee33f8ae.js",
-      "_index-3365b2c6.js",
-      "_useParticipant-b97718a8.js",
-      "_IconArrowBackUp-b7b666d4.js",
-      "_IconTrash-b04a384b.js",
-      "_index-65e86aa0.js",
-      "_Image-a5c71318.js",
-      "_Title-fa50aa69.js",
-      "_Card-34ab72a4.js"
+      "_index-0e00de42.js",
+      "_index-ea9eac82.js",
+      "_index-cdfa0632.js",
+      "_useParticipant-f5f54660.js",
+      "_IconArrowBackUp-db462143.js",
+      "_IconTrash-77a67d7f.js",
+      "_index-dddf9925.js",
+      "_Image-8943cb57.js",
+      "_Title-157ff91c.js",
+      "_Card-2c83e191.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Festival/Participant/Show.tsx"
   },
   "resources/js/Pages/Festival/Registration/Index.tsx": {
-    "file": "assets/Index-7b229ccc.js",
+    "file": "assets/Index-01f562e4.js",
     "imports": [
       "resources/js/app.tsx",
       "resources/js/Pages/Festival/Layout.tsx",
-      "_index-78b7d0e6.js",
-      "_index-ee33f8ae.js",
-      "_index-7970aa7f.js",
-      "_useRegistration-f6bfec74.js",
-      "_Tabs-bd9e75f9.js",
-      "_index-65e86aa0.js",
-      "_Image-a5c71318.js",
-      "_Title-fa50aa69.js",
-      "_Card-34ab72a4.js",
-      "_Center-b2ffc25f.js",
-      "_index-9706cbae.js"
+      "_index-0e00de42.js",
+      "_index-ea9eac82.js",
+      "_index-faedc057.js",
+      "_useRegistration-b17f3aad.js",
+      "_Tabs-d8c7a1e4.js",
+      "_index-dddf9925.js",
+      "_Image-8943cb57.js",
+      "_Title-157ff91c.js",
+      "_Card-2c83e191.js",
+      "_Center-72897897.js",
+      "_index-1c3132f8.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Festival/Registration/Index.tsx"
   },
   "resources/js/Pages/Festival/Registration/Show.tsx": {
-    "file": "assets/Show-f4221f08.js",
+    "file": "assets/Show-e4fd5713.js",
     "imports": [
       "resources/js/app.tsx",
       "resources/js/Pages/Festival/Layout.tsx",
-      "_index-ee33f8ae.js",
-      "_index-3365b2c6.js",
-      "_useRegistration-f6bfec74.js",
-      "_IconArrowBackUp-b7b666d4.js",
-      "_IconTrash-b04a384b.js",
-      "_index-65e86aa0.js",
-      "_IconAdjustments-c1cb00b3.js",
-      "_Card-34ab72a4.js",
-      "_Title-fa50aa69.js",
-      "_index-9706cbae.js",
-      "_Image-a5c71318.js"
+      "_index-ea9eac82.js",
+      "_index-cdfa0632.js",
+      "_useRegistration-b17f3aad.js",
+      "_IconArrowBackUp-db462143.js",
+      "_IconTrash-77a67d7f.js",
+      "_index-dddf9925.js",
+      "_IconAdjustments-44aedc91.js",
+      "_Card-2c83e191.js",
+      "_Title-157ff91c.js",
+      "_index-1c3132f8.js",
+      "_Image-8943cb57.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Festival/Registration/Show.tsx"
   },
   "resources/js/Pages/Manager/Layout.tsx": {
-    "file": "assets/Layout-b4d2ac78.js",
+    "file": "assets/Layout-93a0ac26.js",
     "imports": [
       "resources/js/app.tsx",
-      "_index-65e86aa0.js",
-      "_Image-a5c71318.js"
+      "_index-dddf9925.js",
+      "_Image-8943cb57.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Manager/Layout.tsx"
   },
   "resources/js/Pages/Manager/Manager/Index.tsx": {
-    "file": "assets/Index-35e3282a.js",
+    "file": "assets/Index-51fe331c.js",
     "imports": [
       "resources/js/app.tsx",
-      "_index-78b7d0e6.js",
-      "_index-ee33f8ae.js",
-      "_index-7970aa7f.js",
-      "_useManager-59833505.js",
+      "_index-0e00de42.js",
+      "_index-ea9eac82.js",
+      "_index-faedc057.js",
+      "_useManager-c71a0709.js",
       "resources/js/Pages/Manager/Layout.tsx",
-      "_Title-fa50aa69.js",
-      "_Card-34ab72a4.js",
-      "_index-65e86aa0.js",
-      "_Image-a5c71318.js",
-      "_Center-b2ffc25f.js"
+      "_Title-157ff91c.js",
+      "_Card-2c83e191.js",
+      "_index-dddf9925.js",
+      "_Image-8943cb57.js",
+      "_Center-72897897.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Manager/Manager/Index.tsx"
   },
   "resources/js/Pages/Manager/Manager/Show.tsx": {
-    "file": "assets/Show-fc0c1a97.js",
+    "file": "assets/Show-16f0e84b.js",
     "imports": [
       "resources/js/app.tsx",
-      "_index-78b7d0e6.js",
-      "_index-ee33f8ae.js",
-      "_index-3365b2c6.js",
-      "_useManager-59833505.js",
+      "_index-0e00de42.js",
+      "_index-ea9eac82.js",
+      "_index-cdfa0632.js",
+      "_useManager-c71a0709.js",
       "resources/js/Pages/Manager/Layout.tsx",
-      "_IconArrowBackUp-b7b666d4.js",
-      "_Title-fa50aa69.js",
-      "_Card-34ab72a4.js",
-      "_index-65e86aa0.js",
-      "_Image-a5c71318.js"
+      "_IconArrowBackUp-db462143.js",
+      "_Title-157ff91c.js",
+      "_Card-2c83e191.js",
+      "_index-dddf9925.js",
+      "_Image-8943cb57.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Manager/Manager/Show.tsx"
@@ -694,7 +694,7 @@
       "resources/js/Pages/Manager/Manager/Index.tsx",
       "resources/js/Pages/Manager/Manager/Show.tsx"
     ],
-    "file": "assets/app-f44f9212.js",
+    "file": "assets/app-2aea09ac.js",
     "isEntry": true,
     "src": "resources/js/app.tsx"
   }
