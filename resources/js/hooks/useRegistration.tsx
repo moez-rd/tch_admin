@@ -119,27 +119,14 @@ export function useRegistration() {
         if (registration.participation_method != undefined) {
             registrationInformation.push({
                 key: "Metode partisipasi",
-                value: participationMethodToString(registration.participation_method)!
+                value:  participationMethodToString(registration.participation_method)!
             })
         }
 
         return [
             {
                 title: "Informasi Pendaftaran",
-                data: [
-                    {
-                        key: "UID",
-                        value: registration.uid
-                    },
-                    {
-                        key: "Nama event",
-                        value: registration.event?.name
-                    },
-                    {
-                        key: "Biaya",
-                        value: formatPrice(registration.event?.price!)
-                    },
-                ],
+                data: registrationInformation,
             },
             {
                 title: "Informasi Pembayaran",
