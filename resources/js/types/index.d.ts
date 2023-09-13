@@ -154,6 +154,7 @@ export interface EventRegistration {
     id: string
     uid: string
     name?: string
+    participation_method?: number
     event_id: string
     created_at: string
     updated_at: string

@@ -3,7 +3,7 @@ import {Badge, Text} from "@mantine/core";
 import {
     eventRegistrantRoleToColor,
     eventRegistrantRoleToString,
-    formatPrice,
+    formatPrice, participationMethodToColor, participationMethodToString,
     paymentStatusToColor,
     paymentStatusToLabel
 } from "@/lib/utils";
@@ -11,8 +11,8 @@ import DescriptionChildList from "@/Components/molecules/description-child-list"
 import {EventRegistration} from "@/types";
 import {modals} from "@mantine/modals";
 import {router} from "@inertiajs/react";
-import { PaymentStatus } from "@/enums/constants";
-import { MouseEvent, KeyboardEvent } from "react";
+import {PaymentStatus} from "@/enums/constants";
+import {MouseEvent, KeyboardEvent} from "react";
 
 export function useRegistration() {
 
@@ -42,12 +42,13 @@ export function useRegistration() {
             centered: true,
             children: (
                 <Text size="sm">
-                    Yakin ingin <Text span weight={600} color="green.5">menerima</Text> pendaftaran <Text span weight={600}>{`${registration.name || registration.users![0].name}@${registration.event?.name}`}</Text>?
+                    Yakin ingin <Text span weight={600} color="green.5">menerima</Text> pendaftaran <Text span
+                                                                                                          weight={600}>{`${registration.name || registration.users![0].name}@${registration.event?.name}`}</Text>?
                 </Text>
             ),
             labels: {confirm: 'Ya', cancel: "Batal"},
             onConfirm: () => {
-                router.patch(route('registrations.update.accept',{id: registration.id}), {}, {preserveScroll: true})
+                router.patch(route('registrations.update.accept', {id: registration.id}), {}, {preserveScroll: true})
             }
         })
     }
@@ -59,7 +60,8 @@ export function useRegistration() {
             centered: true,
             children: (
                 <Text size="sm">
-                    Yakin ingin <Text span weight={600} color="red.5">menolak</Text> pendaftaran <Text span weight={600}>{`${registration.name || registration.users![0].name}@${registration.event?.name}`}</Text>?
+                    Yakin ingin <Text span weight={600} color="red.5">menolak</Text> pendaftaran <Text span
+                                                                                                       weight={600}>{`${registration.name || registration.users![0].name}@${registration.event?.name}`}</Text>?
                 </Text>
             ),
             labels: {confirm: 'Ya', cancel: "Batal"},
@@ -99,6 +101,28 @@ export function useRegistration() {
             }
         })
 
+        const registrationInformation = [
+            {
+                key: "UID",
+                value: registration.uid
+            },
+            {
+                key: "Nama event",
+                value: registration.event?.name
+            },
+            {
+                key: "Biaya",
+                value: formatPrice(registration.event?.price!)
+            },
+        ]
+
+        if (registration.participation_method != undefined) {
+            registrationInformation.push({
+                key: "Metode partisipasi",
+                value: participationMethodToString(registration.participation_method)!
+            })
+        }
+
         return [
             {
                 title: "Informasi Pendaftaran",
@@ -115,7 +139,6 @@ export function useRegistration() {
                         key: "Biaya",
                         value: formatPrice(registration.event?.price!)
                     },
-
                 ],
             },
             {
@@ -156,6 +179,15 @@ export function useRegistration() {
         type DataWithType = Data & { type: string }
 
         return registrations.map((registration) => {
+
+            const badges = registration.participation_method != undefined ? [{
+                name: participationMethodToString(registration.participation_method),
+                color: participationMethodToColor(registration.participation_method)
+            }] : [{
+                name: paymentStatusToLabel(registration.event_registration_payment?.status!),
+                color: paymentStatusToColor(registration.event_registration_payment?.status!)
+            }]
+
             return {
                 id: registration.id,
                 title: `${registration.name || registration.users![0].name}@${registration.event?.name}`,
@@ -165,29 +197,24 @@ export function useRegistration() {
                     `#${registration.uid}`,
                     registration.users_count > 1 ? `${registration.users_count} orang` : registration.users![0].name
                 ],
-                badges: [
-                    {
-                        name: paymentStatusToLabel(registration.event_registration_payment?.status!),
-                        color: paymentStatusToColor(registration.event_registration_payment?.status!)
-                    }
-                ],
+                badges: badges,
                 menu: [
                     ...(registration.event_registration_payment?.status === PaymentStatus.NOT_CONFIRMED ? [
                         {
-                        label: "Terima",
-                        linkProps: {
-                            href: "",
-                            onClick: (event: MouseEvent<HTMLAnchorElement, MouseEvent> | KeyboardEvent<HTMLAnchorElement>) => handleAcceptConfirmation(event, registration)
+                            label: "Terima",
+                            linkProps: {
+                                href: "",
+                                onClick: (event: MouseEvent<HTMLAnchorElement, MouseEvent> | KeyboardEvent<HTMLAnchorElement>) => handleAcceptConfirmation(event, registration)
+                            }
+                        },
+                        {
+                            label: "Tolak",
+                            linkProps: {
+                                href: "",
+                                onClick: (event: MouseEvent<HTMLAnchorElement, MouseEvent> | KeyboardEvent<HTMLAnchorElement>) => handleRejectConfirmation(event, registration)
+                            }
                         }
-                    },
-                    {
-                        label: "Tolak",
-                        linkProps: {
-                            href: "",
-                            onClick: (event: MouseEvent<HTMLAnchorElement, MouseEvent> | KeyboardEvent<HTMLAnchorElement>) => handleRejectConfirmation(event, registration)
-                        }
-                    }
-                ] : []),
+                    ] : []),
                     {
                         label: "Hapus",
                         props: {

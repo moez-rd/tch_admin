@@ -43,3 +43,8 @@ export enum EducationLevel {
     HIGH_SCHOOL,
     COLLEGE,
 }
+
+export enum ParticipationMethod {
+    ONLINE,
+    OFFLINE,
+}

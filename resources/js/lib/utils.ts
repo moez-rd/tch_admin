@@ -1,6 +1,13 @@
 import {Festival} from "@/types";
 import {usePage} from "@inertiajs/react";
-import {EducationLevel, EventRegistrationRole, Gender, PaymentStatus, SeminarCastRole} from "@/enums/constants";
+import {
+    EducationLevel,
+    EventRegistrationRole,
+    Gender,
+    ParticipationMethod,
+    PaymentStatus,
+    SeminarCastRole
+} from "@/enums/constants";
 import {Data} from "@/types/app";
 
 export function getFirstLetters(str: string): string {
@@ -55,8 +62,8 @@ export function activeFestival(): Festival {
     return festivals.filter((festival: Festival) => festival.is_active)[0];
 }
 
-export function formatPrice(price: number): string {
-    return `Rp${price.toLocaleString("id-ID")}`;
+export function formatPrice(price: number | undefined): string {
+    return price != undefined ? `Rp${price.toLocaleString("id-ID")}` : '';
 }
 
 type TransformedPaymentStatus = { label: string; color: string }
@@ -155,6 +162,28 @@ export function genderToString(number: number | string): string | null {
             return "Laki-laki"
         case Gender.FEMALE:
             return "Perempuan"
+    }
+
+    return null
+}
+
+export function participationMethodToString(number: number | string): string | null {
+    switch (Number(number)) {
+        case ParticipationMethod.OFFLINE:
+            return "Offline"
+        case ParticipationMethod.ONLINE:
+            return "Online"
+    }
+
+    return null
+}
+
+export function participationMethodToColor(number: number | string): string | null {
+    switch (Number(number)) {
+        case ParticipationMethod.OFFLINE:
+            return "orange"
+        case ParticipationMethod.ONLINE:
+            return "cyan"
     }
 
     return null

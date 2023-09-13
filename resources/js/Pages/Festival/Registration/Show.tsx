@@ -1,22 +1,11 @@
 import React from "react";
 import FestivalLayout from "@/Pages/Festival/Layout";
-import {Head, usePage} from "@inertiajs/react";
-import SectionHeader from "@/Components/molecules/section-header";
+import {Head} from "@inertiajs/react";
 import SectionContent from "@/Components/molecules/section-content";
-import {ActionIcon, Badge, Box, Button, Group, Menu, Tabs} from "@mantine/core";
-import {IconAdjustments, IconArrowBackUp, IconPencil, IconPlus, IconTrash} from "@tabler/icons-react";
-import DataList from "@/Components/molecules/data-list";
-import DataListItem from "@/Components/molecules/data-list-item";
+import {ActionIcon, Box, Button, Group, Menu} from "@mantine/core";
+import {IconAdjustments, IconArrowBackUp, IconTrash} from "@tabler/icons-react";
 import {PageProps} from "@/types";
-import {Data, DataDisplay, DataDisplayChild} from "@/types/app";
-import {
-    eventRegistrantRoleToColor,
-    eventRegistrantRoleToString, formatPrice,
-    paymentStatusToColor,
-    paymentStatusToLabel
-} from "@/lib/utils";
 import DescriptionList from "@/Components/molecules/description-list";
-import DescriptionChildList from "@/Components/molecules/description-child-list";
 import {useRegistration} from "@/hooks/useRegistration";
 
 /**
