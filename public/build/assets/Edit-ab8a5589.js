@@ -1,1 +1,0 @@
-import{i as t,k as r}from"./app-e52bfb8e.js";import a from"./Layout-e3d0b47a.js";import"./index-d6a92397.js";import"./Image-246037d0.js";function m(i){return t(a,{children:t(r,{title:"Faqs"})})}export{m as default};
