@@ -25,11 +25,11 @@ class DatabaseSeeder extends Seeder
     {
         $festival_2023 = $this->createFestivals();
         $avatars = $this->createAvatars();
-        // $participants = $this->createParticipants($festival_2023, $avatars);
-        // $managers = $this->createManagers($festival_2023, $avatars);
+        $participants = $this->createParticipants($festival_2023, $avatars);
+        $managers = $this->createManagers($festival_2023, $avatars);
         $admin = $this->createAdmin($festival_2023, $avatars);
-        // $this->createEvents($festival_2023, $admin, $participants);
-        // $this->createFaqs($festival_2023, $managers);
+        $this->createEvents($festival_2023, $admin, $participants);
+        $this->createFaqs($festival_2023, $managers);
     }
 
     private function createFestivals()
@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
             ->hasContactPersons(4)
             ->hasMilestones(4)
             ->create([
-                'period' => '2023',
+                'period' => '2024',
                 'name' => 'Technology Festival #4',
                 'theme' => 'Green Technologies: Changing the World with Digital Innovation',
                 'description' => "Technology Festival atau yang biasa dikenal dengan Technofest adalah forum kompetitif berskala nasional yang mewadahi minat dan bakat kaum muda dalam dunia teknologi. Ajang kompetitif yang disediakan adalah lomba essay, poster, dan UI/UX. Technofest juga memberikan seminar untuk menyalurkan pengetahuan dan informasi yang berkembang pesat kepada generasi muda dengan tujuan untuk memotivasi kaum muda agar dapat berinovasi dan memajukan teknologi di Indonesia.",
@@ -142,30 +142,30 @@ class DatabaseSeeder extends Seeder
                 'codename' => 'uiux',
             ]);
 
-                $event_competitive_programming = Event::factory()
-                    ->hasContactPersons(4)
-                    ->hasMilestones(4)
-                    ->has(
-                        EventRegistration::factory()
-                            ->count(10)
-                            ->has(EventRegistrationPayment::factory())
-                            ->hasAttached(
-                                $participants->random(3),
-                                ['role' => 2]
-                            )
-                            ->hasAttached(
-                                $participants->random(),
-                                ['role' => 1]
-                            )
+        $event_competitive_programming = Event::factory()
+            ->hasContactPersons(4)
+            ->hasMilestones(4)
+            ->has(
+                EventRegistration::factory()
+                    ->count(10)
+                    ->has(EventRegistrationPayment::factory())
+                    ->hasAttached(
+                        $participants->random(3),
+                        ['role' => 2]
                     )
-                    ->for(Competition::factory()->create(['max_participants' => 4]), 'eventable')
-                    ->for($festival)
-                    ->create([
-                        'name' => 'Competitive Programming',
-                        'is_opened' => false,
-                        'price' => 40000,
-                        'codename' => 'comprog'
-                    ]);
+                    ->hasAttached(
+                        $participants->random(),
+                        ['role' => 1]
+                    )
+            )
+            ->for(Competition::factory()->create(['max_participants' => 4]), 'eventable')
+            ->for($festival)
+            ->create([
+                'name' => 'Competitive Programming',
+                'is_opened' => false,
+                'price' => 40000,
+                'codename' => 'comprog'
+            ]);
 
         $event_essay = Event::factory()
             ->hasContactPersons(4)
@@ -262,15 +262,6 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Toni',
                 'title' => 'Anak Rumahan',
                 'image' => '/images/moderator_1.svg',
-                'role' => config('constants.seminar_cast_role.moderator'),
-            ]);
-
-        SeminarCast::factory()
-            ->for($seminar)
-            ->create([
-                'name' => 'Superatom',
-                'title' => 'Kiwi',
-                'image' => '/images/moderator_2.svg',
                 'role' => config('constants.seminar_cast_role.moderator'),
             ]);
     }

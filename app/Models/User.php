@@ -28,6 +28,7 @@ class User extends Authenticatable
         'role',
         'selected_festival',
         'avatar',
+        'provider'
     ];
 
     /**

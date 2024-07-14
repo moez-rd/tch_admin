@@ -7,72 +7,7 @@ import { Data, DataDisplay } from "@/types/app";
 import { formatDate } from "@/lib/utils";
 import { useForm } from "@mantine/form";
 
-export function useFaq(initialValues?: Faq) {
-    const form = useForm({
-        initialValues: {
-            question: initialValues?.question || "",
-            answer: initialValues?.answer || "",
-        },
-        validate: {
-            question: (value) =>
-                !value.length
-                    ? "Pertanyaan wajib diisi"
-                    : /^(?:(?!\?).)*$/.test(value)
-                    ? "Pertanyaan harus diakhiri dengan tanda tanya (?)"
-                    : null,
-            answer: (value) => (!value.length ? "Jawaban wajib diisi" : null),
-        },
-    });
-
-    const handleCreate = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        form.validate();
-
-        if (form.isValid()) {
-            router.post(route("faqs.store"), form.values);
-        }
-    };
-
-    const handleDelete = (
-        e:
-            | React.MouseEvent<HTMLAnchorElement, MouseEvent>
-            | React.KeyboardEvent<HTMLAnchorElement>
-            | React.MouseEvent<HTMLButtonElement, MouseEvent>,
-        faq: Faq
-    ) => {
-        e.preventDefault();
-
-        modals.openConfirmModal({
-            title: "Hapus Faq",
-            centered: true,
-            children: (
-                <Text size="sm">
-                    Yakin ingin menghapus faq{" "}
-                    <Text span weight={600}>
-                        {faq.question}
-                    </Text>
-                    ?
-                </Text>
-            ),
-            labels: { confirm: "Hapus", cancel: "Batal" },
-            confirmProps: { color: "red" },
-            onConfirm: () => {
-                router.delete(route("faqs.destroy", { id: faq.id }), {
-                    preserveScroll: true,
-                });
-            },
-        });
-    };
-
-    const handleUpdate = (e: React.FormEvent<HTMLFormElement>, faq: Faq) => {
-        e.preventDefault();
-        form.validate();
-
-        if (form.isValid()) {
-            router.put(route("faqs.update", { id: faq.id }), form.values);
-        }
-    };
-
+export function usePayment() {
     const getFaqs = (faqs: Faq[]): Data[] => {
         return faqs.map((faq) => {
             return {

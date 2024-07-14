@@ -16,6 +16,9 @@ class Festival extends Model
     protected $fillable = [
         'name',
         'theme',
+        'period',
+        'logo',
+        'is_active',
         'description',
         'start_date',
         'end_date',

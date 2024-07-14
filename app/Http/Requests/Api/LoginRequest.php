@@ -28,11 +28,10 @@ class LoginRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'avatar' => ['nullable'],
             'email' => ['required'],
-            'access_token' => ['required'],
+            'avatar' => ['nullable'],
             'provider' => ['required', Rule::in(config('constants.provider'))],
-            'provider_id' => ['required'],
+            'access_token' => ['required'],
         ];
     }
 
@@ -48,7 +47,6 @@ class LoginRequest extends FormRequest
 
     private function verifyCredentialsAccessToken(): bool
     {
-        Log::channel('api')->info("QWERTY");
         $accessToken = hash('sha256', explode('|', $this->input('access_token'))[1]);
 
         return DB::table('personal_access_tokens')
@@ -71,7 +69,7 @@ class LoginRequest extends FormRequest
     private function verifyGithubAccessToken(): bool
     {
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer '.$this->input('access_token'),
+            'Authorization' => 'Bearer ' . $this->input('access_token'),
         ])->get('https://api.github.com/user');
 
         $userData = $response->json();

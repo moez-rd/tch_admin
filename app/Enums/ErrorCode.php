@@ -14,4 +14,5 @@ enum ErrorCode: string
     case ALREADY_REGISTERED = "0008";
     case ALREADY_ATTACHED = "0009";
     case REACHES_THE_LIMIT = "0010";
+    case ACCOUNT_NOT_LINKED = "0011";
 }

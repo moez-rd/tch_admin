@@ -47,19 +47,19 @@ class EventController extends Controller
         }
 
         $eventable = $request->input('eventable_type') === config('constants.event_type.competition') ? (
-        Competition::create([
-            'max_participants' => $request->input('max_participants'),
-        ])) : (
-        Seminar::create([
-            'theme' => $request->input('theme'),
-        ]));
+            Competition::create([
+                'max_participants' => $request->input('max_participants'),
+            ])) : (
+            Seminar::create([
+                'theme' => $request->input('theme'),
+            ]));
 
         $event = Event::create([
             'name' => $request->input('name'),
             'codename' => $request->input('codename'),
             'description' => $request->input('description'),
             'image' => $request->input('image'),
-            'is_opened' => $request->input('is_opened'),
+            'is_opened' => 0,
             'price' => $request->input('price'),
             'held_in' => $request->input('held_in'),
             'held_on' => new Carbon($request->input('held_on')),
@@ -107,7 +107,7 @@ class EventController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateEventRequest $request, Event $event)
+    public function update(Request $request, Event $event)
     {
         //
     }
@@ -172,6 +172,5 @@ class EventController extends Controller
 
     public function addSeminarCast(Request $request, Event $event)
     {
-
     }
 }

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->tinyInteger('role', unsigned: true);
             $table->ulid('selected_festival')->nullable();
             $table->string('avatar')->nullable();
+            $table->string('provider')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

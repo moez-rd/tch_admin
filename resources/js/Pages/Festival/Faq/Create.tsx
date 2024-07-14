@@ -1,25 +1,27 @@
 import React from "react";
 import FestivalLayout from "@/Pages/Festival/Layout";
-import {Head, router, usePage} from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
 import SectionHeader from "@/Components/molecules/section-header";
 import SectionContent from "@/Components/molecules/section-content";
-import DataList from "@/Components/molecules/data-list";
-import {Faq, PageProps} from "@/types";
-import {createDataList} from "@/lib/utils";
-import {Data} from "@/types/app";
-import {IconArrowBackUp, IconPencil, IconPlus, IconTrash} from "@tabler/icons-react";
-import {Alert, Box, Button, Group, Text, Textarea, TextInput} from "@mantine/core";
+import { PageProps } from "@/types";
+import { IconArrowBackUp } from "@tabler/icons-react";
+import {
+    Alert,
+    Box,
+    Button,
+    Group,
+    Text,
+    Textarea,
+    TextInput,
+} from "@mantine/core";
 import FormCard from "@/Components/molecules/form-card";
 import FormGroup from "@/Components/molecules/form-group";
-import {useForm} from "@mantine/form";
-import {useFaq} from "@/hooks/useFaq";
+import { useFaq } from "@/hooks/useFaq";
 
 /**
  * interface
  */
-interface Props extends PageProps {
-
-}
+interface Props extends PageProps {}
 
 /**
  * export page
@@ -28,22 +30,34 @@ interface Props extends PageProps {
  * @constructor
  */
 export default function FaqIndexPage(props: Props): React.JSX.Element {
-    const {auth} = props
+    const { auth } = props;
 
-    const {flash}: any = usePage().props;
+    const { flash }: any = usePage().props;
 
-    const {handleCreate, form} = useFaq()
+    const { handleCreate, form } = useFaq();
 
     return (
         <FestivalLayout>
-            <Head title="Faqs"/>
+            <Head title="Faqs" />
 
-            <SectionHeader title="Faqs" subTitle="Kelola faqs"/>
+            <SectionHeader title="Faqs" subTitle="Kelola faqs" />
 
             <SectionContent>
-                <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "end"}}>
-                    <Button variant="white" size="xs" onClick={() => history.back()}
-                            leftIcon={<IconArrowBackUp/>}>Kembali</Button>
+                <Box
+                    sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "end",
+                    }}
+                >
+                    <Button
+                        variant="white"
+                        size="xs"
+                        onClick={() => history.back()}
+                        leftIcon={<IconArrowBackUp />}
+                    >
+                        Kembali
+                    </Button>
                     <Group spacing="4px">
                         {/*<Button size="xs" color="yellow" leftIcon={<IconPencil/>}>Edit</Button>*/}
                         {/*<Button size="xs" color="red" leftIcon={<IconTrash/>}>Hapus</Button>*/}
@@ -53,20 +67,34 @@ export default function FaqIndexPage(props: Props): React.JSX.Element {
                     <form onSubmit={(event) => handleCreate(event)}>
                         <FormCard title="Formulir Faq">
                             <FormGroup title="Informasi Faq">
-                                <TextInput withAsterisk description="Harap untuk mengakhiri dengan tanda tanya (?)"
-                                           placeholder="Pertanyaan"
-                                           label="Pertanyaan" {...form.getInputProps('question')}/>
-                                <Textarea withAsterisk placeholder="Jawaban"
-                                          label="Jawaban" {...form.getInputProps('answer')}/>
+                                <TextInput
+                                    withAsterisk
+                                    description="Harap untuk mengakhiri dengan tanda tanya (?)"
+                                    placeholder="Pertanyaan"
+                                    label="Pertanyaan"
+                                    {...form.getInputProps("question")}
+                                />
+                                <Textarea
+                                    withAsterisk
+                                    placeholder="Jawaban"
+                                    label="Jawaban"
+                                    {...form.getInputProps("answer")}
+                                />
                             </FormGroup>
                             <FormGroup title="Informasi Pembuat">
-                                <TextInput withAsterisk disabled
-                                           description="Nama pembuat tidak akan dipublikasikan ke website utama"
-                                           label="Dibuat oleh" value={auth.user.name}/>
+                                <TextInput
+                                    withAsterisk
+                                    disabled
+                                    description="Nama pembuat tidak akan dipublikasikan ke website utama"
+                                    label="Dibuat oleh"
+                                    value={auth.user.name}
+                                />
                             </FormGroup>
                             {flash.message_error && (
                                 <Alert color="red">
-                                    <Text color="red">{flash.message_error}</Text>
+                                    <Text color="red">
+                                        {flash.message_error}
+                                    </Text>
                                 </Alert>
                             )}
                             <Group position="right" mt="md">
@@ -77,5 +105,5 @@ export default function FaqIndexPage(props: Props): React.JSX.Element {
                 </Box>
             </SectionContent>
         </FestivalLayout>
-    )
+    );
 }

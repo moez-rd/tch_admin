@@ -87,19 +87,18 @@ class FaqController extends Controller
      */
     public function update(Request $request, Faq $faq)
     {
-        if (Faq::where('question', $request->input('question'))->exists()) {
-            return to_route('faqs.create')->with('message_error', "Faq {$request->input('question')} sudah tersedia");
+        if (Faq::where('question', $request->input('question'))->whereNot('id', $faq->id)->exists()) {
+            return to_route('faqs.edit', ['faq' => $faq->id])->with('message_error', "Faq {$request->input('question')} sudah tersedia");
         }
 
         $faq = tap($faq)->update([
             'question' => $request->input('question'),
             'answer' => $request->input('answer'),
             'created_by' => $request->user()->id,
-            'festival_id' => $request->user()->selected_festival,
         ]);
 
         return redirect()
-            ->route('faqs.show')
+            ->route('faqs.show', ['faq' => $faq->id])
             ->with('notification_success', 'Faq ' . Str::limit($faq->question, 20) . ' berhasil diperbarui');
     }
 
