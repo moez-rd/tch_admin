@@ -15,7 +15,7 @@ class ParticipantController extends Controller
     {
         $participants = User::with(['userProfile'])
             ->where('role', config('constants.user_role.participant'))
-            ->whereRelation('festivals', 'id', $request->user()->selected_festival)
+            // ->whereRelation('festivals', 'id', $request->user()->selected_festival)
             ->withCount('eventRegistrations')
             ->orderByDesc('created_at')
             ->get();
@@ -40,7 +40,7 @@ class ParticipantController extends Controller
     {
         $participant = User::find($id);
 
-        $participant->eventRegistrations()->each(function($registration) {
+        $participant->eventRegistrations()->each(function ($registration) {
             if ($registration->event_registrant->role !== config('constants.event_registrant_role.member')) {
                 $registration->delete();
             }

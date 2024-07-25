@@ -14,6 +14,7 @@ class EventController extends Controller
     public function findAll(Request $request)
     {
         $events = Event::whereRelation('festival', 'is_active', true)
+            ->where("is_opened", true)
             ->get();
 
         return jsonResponse(Response::HTTP_OK, 'OK', $events);
