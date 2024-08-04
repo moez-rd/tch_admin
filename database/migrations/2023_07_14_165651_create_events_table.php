@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('held_in')->nullable();
             $table->dateTime('held_on')->nullable();
             $table->string('group_link')->nullable();
+            $table->string('guidebook')->nullable();
             $table->ulid('festival_id')->constrained()->cascadeOnDelete();
             $table->ulid('eventable_id')->constrained()->cascadeOnDelete();
             $table->string('eventable_type');
