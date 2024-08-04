@@ -23,27 +23,27 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // $festival_2023 = $this->createFestivals();
+        $festival_2000 = $this->createFestivals();
         $avatars = $this->createAvatars();
         // $participants = $this->createParticipants($festival_2023, $avatars);
         // $managers = $this->createManagers($festival_2023, $avatars);
-        $admin = $this->createAdmin($avatars);
+        $admin = $this->createAdmin($festival_2000, $avatars);
         // $this->createEvents($festival_2023, $admin, $participants);
         // $this->createFaqs($festival_2023, $managers);
     }
 
     private function createFestivals()
     {
-        $festival_2023 = Festival::factory()
+        $festival_2000 = Festival::factory()
             ->hasContactPersons(4)
             ->hasMilestones(4)
             ->create([
-                'period' => '2024',
-                'name' => 'Technology Festival #4',
-                'theme' => 'Green Technologies: Changing the World with Digital Innovation',
-                'description' => "Technology Festival atau yang biasa dikenal dengan Technofest adalah forum kompetitif berskala nasional yang mewadahi minat dan bakat kaum muda dalam dunia teknologi. Ajang kompetitif yang disediakan adalah lomba essay, poster, dan UI/UX. Technofest juga memberikan seminar untuk menyalurkan pengetahuan dan informasi yang berkembang pesat kepada generasi muda dengan tujuan untuk memotivasi kaum muda agar dapat berinovasi dan memajukan teknologi di Indonesia.",
-                'start_date' => new Carbon('2023-08-07'),
-                'end_date' => new Carbon('2023-09-16'),
+                'period' => '2000',
+                'name' => 'Example Technology Festival',
+                'theme' => 'Lorem Ipsum',
+                'description' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+                'start_date' => new Carbon('2000-08-07'),
+                'end_date' => new Carbon('2000-09-16'),
                 'is_active' => true,
             ]);
 
@@ -60,7 +60,7 @@ class DatabaseSeeder extends Seeder
         //         'is_active' => false,
         //     ]);
 
-        return $festival_2023;
+        return $festival_2000;
     }
 
     public function createAvatars()
@@ -91,17 +91,17 @@ class DatabaseSeeder extends Seeder
             ]);
     }
 
-    public function createAdmin($avatars)
+    public function createAdmin($festival, $avatars)
     {
         return User::factory()
-            // ->hasAttached($festival)
+            ->hasAttached($festival)
             ->create([
                 'name' => 'Admin',
                 'email' => '6wnUfLmT9uPb@gmail.com',
                 'role' => config('constants.user_role.admin'),
                 'password' => 'ifGE4TA6Vq22sld8DNpik',
                 'avatar' => $avatars->random()->image,
-                // 'selected_festival' => $festival->id,
+                'selected_festival' => $festival->id,
             ]);
     }
 
