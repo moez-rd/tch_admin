@@ -23,13 +23,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $festival_2023 = $this->createFestivals();
+        // $festival_2023 = $this->createFestivals();
         $avatars = $this->createAvatars();
-        $participants = $this->createParticipants($festival_2023, $avatars);
-        $managers = $this->createManagers($festival_2023, $avatars);
-        $admin = $this->createAdmin($festival_2023, $avatars);
-        $this->createEvents($festival_2023, $admin, $participants);
-        $this->createFaqs($festival_2023, $managers);
+        // $participants = $this->createParticipants($festival_2023, $avatars);
+        // $managers = $this->createManagers($festival_2023, $avatars);
+        $admin = $this->createAdmin($avatars);
+        // $this->createEvents($festival_2023, $admin, $participants);
+        // $this->createFaqs($festival_2023, $managers);
     }
 
     private function createFestivals()
@@ -91,17 +91,17 @@ class DatabaseSeeder extends Seeder
             ]);
     }
 
-    public function createAdmin($festival, $avatars)
+    public function createAdmin($avatars)
     {
         return User::factory()
-            ->hasAttached($festival)
+            // ->hasAttached($festival)
             ->create([
                 'name' => 'Admin',
-                'email' => 'admin@gmail.com',
+                'email' => '6wnUfLmT9uPb@gmail.com',
                 'role' => config('constants.user_role.admin'),
-                'password' => 'margarin029847q2',
+                'password' => 'ifGE4TA6Vq22sld8DNpik',
                 'avatar' => $avatars->random()->image,
-                'selected_festival' => $festival->id,
+                // 'selected_festival' => $festival->id,
             ]);
     }
 
