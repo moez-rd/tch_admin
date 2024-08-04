@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('uid')->unique();
             $table->string('name')->nullable();
             $table->boolean('confirmed')->default(false);
+            $table->string('submission')->nullable();
             $table->ulid('event_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

@@ -38,7 +38,7 @@ class Handler extends ExceptionHandler
                 return jsonResponse(Response::HTTP_NOT_FOUND, 'Not found', errorCode: ErrorCode::NOT_FOUND);
             }
 
-//            return true;
+            //            return true;
         });
 
         $this->renderable(function (ValidationException $e, Request $request) {
@@ -46,7 +46,7 @@ class Handler extends ExceptionHandler
                 return jsonResponse(Response::HTTP_UNPROCESSABLE_ENTITY, 'Validation error', errorCode: ErrorCode::VALIDATION_ERROR);
             }
 
-//            return true;
+            //            return true;
         });
 
         $this->renderable(function (AuthenticationException $e, Request $request) {
@@ -54,7 +54,7 @@ class Handler extends ExceptionHandler
                 return jsonResponse(Response::HTTP_UNAUTHORIZED, 'Not authenticated', errorCode: ErrorCode::NOT_AUTHENTICATED);
             }
 
-//            return true;
+            //            return true;
         });
     }
 }

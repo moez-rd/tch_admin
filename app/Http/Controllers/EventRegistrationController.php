@@ -18,6 +18,7 @@ class EventRegistrationController extends Controller
     {
         $registrations = EventRegistration::with(['event:id,name,eventable_type', 'users', 'eventRegistrationPayment'])
             ->whereRelation('event', 'festival_id', $request->user()->selected_festival)
+            ->orderByDesc('created_at')
             ->get();
 
         return Inertia::render('Festival/Registration/Index', [
@@ -94,8 +95,8 @@ class EventRegistrationController extends Controller
         ]);
 
         return redirect()
-        ->back()
-        ->with('notification_info', 'Pendaftaran #' . $eventRegistration->uid . ' berhasil diterima');
+            ->back()
+            ->with('notification_info', 'Pendaftaran #' . $eventRegistration->uid . ' berhasil diterima');
     }
 
     public function rejectPayment(string $id)
@@ -106,6 +107,7 @@ class EventRegistrationController extends Controller
         ]);
 
         return redirect()
-        ->back()
-        ->with('notification_info', 'Pendaftaran #' . $eventRegistration->uid . ' berhasil ditolak');    }
+            ->back()
+            ->with('notification_info', 'Pendaftaran #' . $eventRegistration->uid . ' berhasil ditolak');
+    }
 }

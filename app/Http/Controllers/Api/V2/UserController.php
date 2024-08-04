@@ -127,6 +127,8 @@ class UserController extends Controller
 
         $query->whereRelation('festival', 'is_active', true);
 
+        $query->where('is_opened', true);
+
         $query->with(['eventRegistrations' => function (Builder $query) use ($request) {
             $query->whereRelation('users', 'id', $request->user()->id);
         }]);
@@ -172,15 +174,19 @@ class UserController extends Controller
             return jsonResponse(Response::HTTP_CONFLICT, 'Already registered', errorCode: ErrorCode::ALREADY_REGISTERED);
         }
 
-        $eventRegistration = $event->eventRegistrations()->create($request->input());
-
-
         // Check whether the event is individual or team type.
+        $isIndividual = ($event->eventable_type === config('constants.event_type.seminar')) || ($event->eventable['max_participants'] == 1);
+
+        $eventRegistration = $event->eventRegistrations()->create([
+            "name" => $request->input("name"),
+            "participation_method" => $request->input("participation_method"),
+            "confirmed" => $isIndividual
+        ]);
+
         // 0 => individual, 1 => leader
-        $role = ($event->eventable_type === config('constants.event_type.seminar')) || ($event->eventable['max_participants'] == 1)
+        $role = $isIndividual
             ? config('constants.event_registrant_role.individual')
             : config('constants.event_registrant_role.leader');
-
 
         // Attach current authenticated user to the registration with determined role
         $eventRegistration->users()->attach($request->user()->id, ['role' => $role]);
@@ -253,8 +259,6 @@ class UserController extends Controller
         $eventRegistration->users()->detach(
             $user->id
         );
-
-
 
         return jsonResponse(Response::HTTP_RESET_CONTENT, 'OK');
     }

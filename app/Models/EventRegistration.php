@@ -17,6 +17,7 @@ class EventRegistration extends Model
         'event_id',
         'name',
         'confirmed',
+        'submission',
         'participation_method'
     ];
 
@@ -46,6 +47,5 @@ class EventRegistration extends Model
     public function eventRegistrationPayment(): HasOne
     {
         return $this->hasOne(EventRegistrationPayment::class);
-
     }
 }
