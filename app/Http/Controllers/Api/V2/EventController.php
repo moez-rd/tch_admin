@@ -28,7 +28,7 @@ class EventController extends Controller
             return jsonResponse(Response::HTTP_NOT_FOUND, 'Not found', errorCode: ErrorCode::NOT_FOUND);
         }
 
-        return jsonResponse(Response::HTTP_OK, 'OK', $event);
+        return jsonResponse(Response::HTTP_OK, 'OK', $event->load('milestones', 'contactPersons'));
     }
 
     public function getEventableType(Request $request, Event $event)
